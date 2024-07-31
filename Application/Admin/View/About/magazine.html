@@ -58,11 +58,19 @@
       .magazine {
         margin-top: 79px;
       }
-      .magazine-row {
+      /* .magazine-row {
         display: flex;
         justify-content: space-between;
         margin-top: 30px;
-      }
+      } */
+       .magazine-row {
+        display: grid;
+        grid-template-columns: repeat(3, 298px);
+        grid-template-rows: repeat(1, 186px);
+        row-gap: 150px;
+        column-gap: 33px;
+        margin-bottom: 150px;
+       }
       .magazine-item {
         width: 300px;
         height: 299px;
@@ -75,6 +83,7 @@
         width: 280px;
         height: 182px;
         margin: 0 auto;
+        object-fit: cover;
         background-color: #d9d9d9;
       }
       .magazine-item-title {
@@ -88,7 +97,7 @@
         height: 29px;
         color: #666;
         font-family: "PingFang SC Regular";
-        font-size: 9px;
+        font-size: 5px;
         font-weight: 400;
         position: relative;
       }
@@ -107,6 +116,9 @@
         font-size: 9px;
         font-weight: 400;
         margin-top: 20px;
+      }
+      .magazine-item a{
+        text-decoration: none;
       }
     </style>
   </head>
@@ -156,76 +168,28 @@
           >
         </div>
       </div>
-      <!-- content 960px -->
+
       <div class="w-960 clearfix">
         <div class="magazine">
           <div class="magazine-row">
-            <div class="magazine-item">
-              <img src="" alt="" class="magazine-item-img" />
-              <p class="magazine-item-title">
-                精信科技总裁李文帅出席武汉市高新技术产业会...
-              </p>
-              <p class="magazine-item-text">
-                6月25日，由武汉市人民政府主办的武汉光谷高新技术产业合作大会在武汉举行。会签武汉市市委书记...
-              </p>
-              <p class="magazine-item-date">2023-06-25</p>
-            </div>
-            <div class="magazine-item">
-              <img src="" alt="" class="magazine-item-img" />
-              <p class="magazine-item-title">
-                精信科技总裁李文帅出席武汉市高新技术产业会...
-              </p>
-              <p class="magazine-item-text">
-                6月25日，由武汉市人民政府主办的武汉光谷高新技术产业合作大会在武汉举行。会签武汉市市委书记...
-              </p>
-              <p class="magazine-item-date">2023-06-25</p>
-            </div>
-            <div class="magazine-item">
-              <img src="" alt="" class="magazine-item-img" />
-              <p class="magazine-item-title">
-                精信科技总裁李文帅出席武汉市高新技术产业会...
-              </p>
-              <p class="magazine-item-text">
-                6月25日，由武汉市人民政府主办的武汉光谷高新技术产业合作大会在武汉举行。会签武汉市市委书记...
-              </p>
-              <p class="magazine-item-date">2023-06-25</p>
-            </div>
-          </div>
-          <div class="magazine-row">
-            <div class="magazine-item">
-              <img src="" alt="" class="magazine-item-img" />
-              <p class="magazine-item-title">
-                精信科技总裁李文帅出席武汉市高新技术产业会...
-              </p>
-              <p class="magazine-item-text">
-                6月25日，由武汉市人民政府主办的武汉光谷高新技术产业合作大会在武汉举行。会签武汉市市委书记...
-              </p>
-              <p class="magazine-item-date">2023-06-25</p>
-            </div>
-            <div class="magazine-item">
-              <img src="" alt="" class="magazine-item-img" />
-              <p class="magazine-item-title">
-                精信科技总裁李文帅出席武汉市高新技术产业会...
-              </p>
-              <p class="magazine-item-text">
-                6月25日，由武汉市人民政府主办的武汉光谷高新技术产业合作大会在武汉举行。会签武汉市市委书记...
-              </p>
-              <p class="magazine-item-date">2023-06-25</p>
-            </div>
-            <div class="magazine-item">
-              <img src="" alt="" class="magazine-item-img" />
-              <p class="magazine-item-title">
-                精信科技总裁李文帅出席武汉市高新技术产业会...
-              </p>
-              <p class="magazine-item-text">
-                6月25日，由武汉市人民政府主办的武汉光谷高新技术产业合作大会在武汉举行。会签武汉市市委书记...
-              </p>
-              <p class="magazine-item-date">2023-06-25</p>
-            </div>
+            
+            <volist name="list" id="vo">
+
+              <div class="magazine-item">
+                <a href="{$vo.url}" target="_blank">
+                  <img src="{$vo.img}" alt="" class="magazine-item-img" />
+                  <p class="magazine-item-title">{$vo.title}</p>
+                  <p class="magazine-item-text">{$vo.text}</p>
+                  <p class="magazine-item-date">{$vo.date}</p>
+                </a>
+              </div>
+
+            </volist>
+
           </div>
         </div>
       </div>
-    </div>
+
     <!-- footer组件 -->
     <include file="Admin@Common/new_footer" />
   </body>

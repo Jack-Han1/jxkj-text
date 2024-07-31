@@ -127,9 +127,13 @@ class AboutController extends CommonController
     {
         $this->display();
     }
-    // 走进精信->精信简介
+    // 走进精信->精信月刊
     public function magazine()
     {
+        // $staff = M('magazine');
+        $list = M('magazine')->where(array('status' => 1))
+        ->order('sort asc')->select();
+        $this->assign('list', $list);
         $this->display();
     }
 }

@@ -423,6 +423,102 @@ class AboutController extends CommonController
         $picList=M('staff')->where(array('pid'=>$id,'status'=>1))->select();
         $this->ajaxReturn(array('picList'=>$picList));
     }
+
+    public function magazine(){
+        $list = M('magazine')->where(array('status' => 1))
+        ->order('sort asc')->select();
+        $this->assign('list', $list);
+        $this->display();
+    }
+
+    // public function edit(){
+    //     $id=I("get.id");
+    //     $info=M("content")->where('id='.$id)->find();
+    //     // $info['content']=htmlentities($info['content']);
+    //     $this->assign('action_check',CONTROLLER_NAME."/index");
+    //     $this->assign('info',$info);
+    //     $this->assign('id',$id);
+    //     $this->display();
+    // }
+
+    public function edit_magazine(){
+        $id=I("get.id");
+        $info=M("magazine")->where('id='.$id)->find();
+        // $info['content']=htmlentities($info['content']);
+        $this->assign('action_check',CONTROLLER_NAME."/index");
+        $this->assign('info',$info);
+        $this->assign('id',$id);
+        $this->display();
+    }
+
+    public function update_magazine(){
+        $save['id'] = $_POST['id'];
+        $save['text'] = $_POST['text'];
+        // $save['sort'] = $_POST['sort'];
+        $save['sort'] = 0;
+        // 不让管理员改显示优先级
+        $save['title'] = $_POST['title'];
+        $save['img'] = $_POST['img'];
+        $save['url'] = $_POST['url'];
+        //$save['url'] = 'About/introduce';
+        $save['update_time'] = date("Y-m-d H:i:s" ,time());
+//        $save['status'] = 1;
+        $res = M('magazine')->where('id='.$_POST['id'])->save($save);
+        if($res){
+            $this->writeLog("用户修改内容:".$_POST['id']);
+            $this->success("修改成功","index");
+        }else{
+            $this->errer("修改失败！");
+        }
+    }
+
+    public function del_magazine(){
+        $id = $_POST['id'];
+        $update_data['status'] = 0 ;
+        // $update_data['create_id'] = session('user.id');
+        $update_data['update_time'] = date("Y-m-d H:i:s",time());
+        $re = M('magazine')->where('id='.$id)->save($update_data);
+        if($re){
+            $this->writeLog("用户删除月刊:".$_POST['id']);
+            $data['status'] = 1;
+            $data['info'] = "删除成功!";
+        }else{
+            $data['status'] = 0;
+            $data['info'] = "删除失败!";
+        }
+        echo json_encode($data);
+    }
+
+
+    // public function add(){
+    //     $content=M("content");
+    //     $data=array(
+    //         'name'=>'新增子菜单',
+    //         'menu_id'=>61,
+    //         'create_id'=>session('user.id'),
+    //         'create_time'=>date('Y-m-d H-i-s'),
+    //         'status'=>1
+    //     );
+    //     $content->add($data);            
+    //     $this->redirect('index');
+    // }
+
+
+    public function add_magazine(){
+        $content=M("magazine");
+        $data=array(
+            'title'=>$_POST['title'],
+            'text'=>$_POST['text'],
+            'img'=>$_POST['img'],
+            'url'=>$_POST['url'],
+            'date'=>$_POST['date'],
+            'sort'=>0,
+            'update_time'=>date("Y-m-d H:i:s",time()),
+            'status'=>1
+        );
+        $content->add($data);        
+        $this->redirect('index');
+    }
 }
 
 
