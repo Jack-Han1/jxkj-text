@@ -120,7 +120,7 @@
         <div class="news-title">{$info['name']}</div>
         <!-- 时间 -->
         <div class="news-date">
-          发布时间：2023-7-11&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 阅读：156次
+          发布时间：{$info['post_time']}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 阅读：{$info['clicks']}
         </div>
         <!-- 正文 -->
         <div class="news-content">{$info['content']}</div>
@@ -165,5 +165,6 @@
         // 执行其他操作
       }
     });
+
   </script>
 </html>

@@ -190,6 +190,11 @@ class NewsController extends CommonController
     public function news_detail()
     {
         $info = M('article')->where('id=' . $_GET['id'])->find();
+
+        // 统计点击量
+        $save['clicks'] = $info['clicks'] + 1;
+        M('article')->where('id='.$_GET['id'])->save($save);
+
         if ($info['file_id']) {
             $info['pic_info'] = M('file')->where('id=' . $info['file_id'])->find();
         }
@@ -231,10 +236,13 @@ class NewsController extends CommonController
                 $back_url = __APP__ . "/index.php/Admin/News/focus";
                 break;
         }
+
+        $info['post_time'] = substr($info['article_time'], 0, 16);
         $this->assign('prev_id', $prev_id);
         $this->assign('next_id', $next_id);
         $this->assign('back_url', $back_url);
         $this->assign('info', $info);
         $this->display();
     }
+
 }
