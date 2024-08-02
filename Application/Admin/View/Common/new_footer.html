@@ -110,37 +110,78 @@
     text-align: center;
     line-height: 54px;
   }
+  .txt{
+    text-decoration: none;
+  }
 </style>
 <div class="new_footer">
   <div class="footer-top">
     <div class="footer-menu">
       <div class="foot-menu-item">
         <p class="menu-item-title">走进精信</p>
-        <p class="menu-item-name">精信简介</p>
+        
+        <volist name="footer_list1" id="footer_list1">
+          <a href="__APP__/index.php/Admin/{$footer_list1['url']}"
+          target="_self"
+          class="txt">
+          <p class="menu-item-name">{$footer_list1['name']}</p>
+          </a>
+        </volist>
+        <!-- <p class="menu-item-name">精信简介</p>
         <p class="menu-item-name">发展历程</p>
         <p class="menu-item-name">荣誉资质</p>
         <p class="menu-item-name">企业文化</p>
-        <p class="menu-item-name">精信月刊</p>
+        <p class="menu-item-name">精信月刊</p> -->
       </div>
       <div class="foot-menu-item">
+      <p class="menu-item-title">新闻中心</p>
+      <volist name="footer_list2" id="footer_list2">
+        <a href="__APP__/index.php/Admin/{$footer_list2['url']}"
+        target="_self"
+        class="txt">
+        <p class="menu-item-name">{$footer_list2['name']}</p>
+        </a>
+      </volist>
+    </div>
+      <!-- <div class="foot-menu-item">
         <p class="menu-item-title">新闻中心</p>
         <p class="menu-item-name">企业新闻</p>
-      </div>
+      </div> -->
       <div class="foot-menu-item">
+        <p class="menu-item-title">产业布局</p>
+      <volist name="footer_list3" id="footer_list3">
+        <a href="__APP__/index.php/Admin/{$footer_list3['url']}"
+        target="_self"
+        class="txt">
+        <p class="menu-item-name">{$footer_list3['name']}</p>
+        </a>
+      </volist>
+    </div>
+      <!-- <div class="foot-menu-item">
         <p class="menu-item-title">产业布局</p>
         <p class="menu-item-name">通讯业务</p>
         <p class="menu-item-name">智慧校园</p>
         <p class="menu-item-name">光伏电能投资</p>
         <p class="menu-item-name">智慧城管</p>
-      </div>
+      </div> -->
       <div class="foot-menu-item" style="border-right: 0px solid #d5dee5">
+        <p class="menu-item-title">加入我们</p>
+      <volist name="footer_list4" id="footer_list4">
+        <a href="__APP__/index.php/Admin/{$footer_list4['url']}"
+        target="_self"
+        class="txt">
+        <p class="menu-item-name">{$footer_list4['name']}</p>
+        </a>
+      </volist>
+    </div>
+      <!-- <div class="foot-menu-item" style="border-right: 0px solid #d5dee5">
         <p class="menu-item-title">加入我们</p>
         <p class="menu-item-name">人才理念</p>
         <p class="menu-item-name">人才培养</p>
         <p class="menu-item-name">员工风采</p>
         <p class="menu-item-name">招贤纳士</p>
         <p class="menu-item-name">薪酬福利</p>
-      </div>
+      </div> -->
     </div>
     <div class="footer-info">
       <div class="footer-info-code clearfix">
@@ -173,3 +214,7 @@
     >
   </div>
 </div>
+
+<script>
+
+</script>
