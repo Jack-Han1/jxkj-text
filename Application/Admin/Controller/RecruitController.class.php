@@ -83,8 +83,54 @@ class RecruitController extends CommonController
     // 人力资源->招贤纳士
     public function recruit()
     {
+        $map['status'] = 2;
+        if($_POST['search-job']!=""){
+            $query = $_POST['search-job'].'%';
+            $map['job'] = array('like', $query);
+        }
+        if($_POST['submit_kind_data']!=""){
+            $map['kind'] = $_POST['submit_kind_data'];
+        }
+        // if($_POST['submit_pos_data']!=""){
+        //     $query = $_POST['submit_pos_data'].'%';
+        //     $map['kind'] = $_POST['submit_data'];
+        // }
+        
+        // $res = M('recruit')->where($map)->select();
+        $count = M('recruit')->where($map)->count();
+        $Page  = new \Think\Page($count, 5);
+        $Page->setConfig('prev', '上一页');
+        $Page->setConfig('next', '下一页');
+        $Page->setConfig('last', '末页');
+        $Page->setConfig('first', '首页');
+        $Page->setConfig('theme', '%UP_PAGE% %LINK_PAGE% %DOWN_PAGE%');
+        $page  = $Page->show();
+        $list =  M('recruit')->where($map)->order('recruit_time desc')->limit($Page->firstRow . ',' . $Page->listRows)->select();
+        $this->assign('list', $list);
+        $this->assign('page', $page);
         $this->display();
     }
+
+    public function recruit_detail()
+    {
+        $info = M('recruit')->where('id=' . $_GET['id'])->find();
+
+        $this->assign('prev_id', $prev_id);
+        $this->assign('next_id', $next_id);
+        $this->assign('back_url', $back_url);
+        $this->assign('info', $info);
+        $this->display();
+    }
+
+    // public function search_job()
+    // {
+    //     $query = $_POST['search-job'] + '%';
+    //     $map['job '] = array('like', $query);
+    //     $res = M('recruit')->where($map)->select();
+    //     echo json_encode($res);
+    // }
+
+
     // 人力资源->薪酬福利
     public function salary()
     {

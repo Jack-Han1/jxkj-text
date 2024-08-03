@@ -52,83 +52,252 @@
         margin: 0 auto;
         /* border: 1px solid red; */
       }
-      .recruit {
-        width: 646px;
-        height: 319px;
-        background-color: #fff;
+
+      .recruit-search{
+        /* Rectangle 124 */
+        color: #333333;
+        position: relative;
+        width: 483px;
+        height: 150px;
+        margin-bottom: 50px;
+        left: 350px;
+        top: 25px;
+        background: #FFFFFF;
         border-radius: 8px;
-        margin: 0 auto;
-        margin-top: 56px;
-        padding: 20px;
       }
-      .title-box {
+
+      .title-search{
+        /* 职位筛选 */
         position: relative;
-        padding-bottom: 14px;
-      }
-      .title-box::after {
-        content: "";
-        width: 606px;
-        height: 1px;
-        background-color: #f2f2f2;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-      }
-      .recruit-title {
-        color: #333;
-        font-family: "PingFang SC Regular";
-        font-size: 11px;
+        width: 60px;
+        height: 15px;
+        /* left: 581px;
+        top: 431px; */
+        font-family: 'PingFang SC';
+        font-style: normal;
         font-weight: 400;
+        font-size: 15px;
+        line-height: 15px;
+        color: #333333;
+        left: 24px;
+        top: 15px;
+        display: inline-block;
+      }
+
+      .search-box-left{
+        /* Rectangle 125 */
         position: relative;
-        padding-left: 14px;
-        margin: 0;
+        width: 363px;
+        height: 27px;
+        left: 22px;
+        top: 10px;
+        background: #D9D9D9;
+        display: inline-block;
+        border-radius: 12px 0 0 12px;
       }
-      .recruit-title::before {
-        content: "急";
-        color: #333;
-        font-family: "PingFang SC Regular";
-        font-size: 8px;
-        font-weight: 400;
+
+      .search-box-right{
+        /* Rectangle 126 */
+        position: relative;
+        width: 78px;
+        height: 27px;
+        line-height: 27px;
+        left: 17px;
+        top: 9px;
         text-align: center;
-        line-height: 12px;
-        height: 12px;
-        width: 12px;
-        background-color: #d9d9d9;
+        font-family: 'PingFang SC';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 7px;
+        background: #9F9F9F;
+        display: inline-block;
+        border-radius: 0 12px 12px 0;
+      }
+
+      .search-words{
+        color: #333333;
+        position: relative;
+        left: 15px;
+        top: 40px;
+        display: flex;
+        width: 100%;
+        height: 30px;
+        justify-content: left;
+      }
+
+      .search-words a{
+        color: #333333;
+        font-family: 'PingFang SC';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        margin-left: 10px;
+      }
+
+      .search-words a:nth-last-child(1){
+        color: #333333;
+        font-family: 'PingFang SC';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        margin-left: 175px;
+      }
+
+      .search-sidebar{
+        /* Rectangle 123 */
+        color: #333333;
+        position: relative;
+        width: 175px;
+        height: 220px;
+        left: 145px;
+        top: -175px;
+        background: #FFFFFF;
+        border-radius: 8px;
+        display: inline-block;
+      }
+
+      .search-sidebar p:nth-child(1){
+        position: relative;
+        top: 12px;
+        left: 20px;
+        margin-bottom: 20px;
+        font-family: 'PingFang SC';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+      }
+
+      .search-sidebar p:nth-child(2){
+        position: relative;
+        top: 12px;
+        left: 15px;
+        margin-bottom: 20px;
+        font-family: 'PingFang SC';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 13px;
+      }
+
+      .search-sidebar div{
+        position: relative;
+        top: 12px;
+        left: 15px;
+        margin-bottom: 20px;
+        font-family: 'PingFang SC';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+      }
+
+      .info-card{
+        color: #333333;
+        position: relative;
+        width: 483px;
+        height: 100px;
+        left: 350px;
+        top: -223px;
+        margin-bottom: 20px;
+        background: #FFFFFF;
+        border-radius: 8px;
+      }
+
+      .info-card .title{
+        position: relative;
+        font-family: 'PingFang SC';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        left: 15px;
+        top: 10px;
+        
+      }
+
+      /* .info-card .title::before{
+       
+      } */
+
+      .emergency::before{
+        content: "急";
+        background-color:  #D9D9D9;
+        font-size: 5px;
+        text-align: center;
+        line-height: 15px; 
+        width: 15px;
+        height: 15px;
         border-radius: 2px;
-        position: absolute;
-        left: -2px;
-        top: 2px;
+        display: inline-block;
       }
-      .recruit-title2 {
-        color: #333;
-        font-family: "PingFang SC Regular";
-        font-size: 8px;
+
+      .info-card span:not(.title){
+        position: relative;
+        font-family: 'PingFang SC';
+        font-style: normal;
         font-weight: 400;
+        font-size: 10px;
+        left: 15px;
+        top: 15px;
+        margin-right: 20px;
       }
-      .require-name {
-        color: #333;
-        font-family: "PingFang SC Regular";
-        font-size: 11px;
-        font-weight: 400;
-        margin: 0;
-        margin-top: 18px;
-        margin-bottom: 9px;
+
+      .page {
+        /* border: 1px solid red; */
+        text-align: center;
+        text-decoration: none;
+        margin-top: -200px;
+        margin-bottom: 30px;
       }
-      .require-title {
-        color: #333;
-        font-family: "PingFang SC Regular";
+      .page div {
+        display: inline-block;
+      }
+      .page .current,
+      .page .num,
+      .page .next,
+      .page .prev {
+        margin: 0 3px;
         font-size: 9px;
-        font-weight: 400;
-        margin: 3px 0;
+        line-height: 22px;
+        text-decoration: none;
       }
-      .require-detail {
-        color: #666;
-        font-family: "PingFang SC Regular";
-        font-size: 9px;
-        font-weight: 400;
+      .page .current {
+        float: left;
         display: block;
-        line-height: 14px;
+        width: 22px;
+        height: 22px;
+        background-color: rgb(56, 28, 98);
+        color: white;
+      }
+      .page .num {
+        float: left;
+        display: block;
+        width: 22px;
+        height: 22px;
+        background-color: #fff;
+        color: rgb(102, 102, 102);
+      }
+      .page .next {
+        float: left;
+        display: block;
+        width: 46px;
+        height: 22px;
+        background-color: #fff;
+        color: rgb(102, 102, 102);
+      }
+      .page .prev {
+        float: left;
+        display: block;
+        width: 46px;
+        height: 22px;
+        background-color: #fff;
+        color: rgb(102, 102, 102);
+      }
+      #search-job {
+        width: 100%;
+        border: 0; 
+        outline: none; 
+        background-color: rgba(0, 0, 0, 0);
+        line-height: 27px;
+        text-align: center;
+        font-size: small;
       }
     </style>
   </head>
@@ -183,51 +352,132 @@
       </div>
       <!-- content 960px -->
       <div class="w-960 clearfix">
-        <div class="recruit">
-          <div class="title-box">
-            <p class="recruit-title">招聘专员</p>
-            <span class="recruit-title2">话务专员</span>&nbsp;&nbsp;&nbsp;<span
-              class="recruit-title2"
-              >武汉·硚口</span
-            >
+        <div class="recruit-search">
+          <p class="title-search">职位筛选</p>
+          <div class="search-box">
+            <div class="search-box-left">
+              <form id="form" action="recruit" method="post" enctype="multipart/form-data" >
+              <input id="search-job" type="text" name="search-job" value="" placeholder="请输入岗位" maxlength="10"/>
+              </form>
+            </div>
+            <div class ="search-box-right"><input onclick="sub()" id="search-btn" 
+              style="border:0;background-color: rgba(0, 0, 0, 0);  color:#333333" type="button" value="搜索职位" /></div>
           </div>
-          <div class="require-box">
-            <p class="require-name">招聘专员</p>
-            <p class="require-title">岗位职责</p>
-            <span class="require-detail">
-              1、 负责管理区域内物流相关操作，完成成本、安全、质量、体系等任务；
-            </span>
-            <span class="require-detail"
-              >2、 仓库日常运作管理（收、发、存、循环盘点及年度盘点）；</span
-            >
-            <span class="require-detail"
-              >3、
-              负责带领班组仓储人员的日常管理，包括晨会召开、KPI管理、考勤等；</span
-            >
-            <span class="require-detail"
-              >4、
-              KPI：仓库准确率，安全事故率，仓库相关物流成本，仓库人员效率，仓库设备效率，仓库面积利用率，内部配送准确率。</span
-            >
-            <p class="require-title" style="margin-top: 15px;">岗位要求</p>
-            <span class="require-detail">
-              1、 负责管理区域内物流相关操作，完成成本、安全、质量、体系等任务；
-            </span>
-            <span class="require-detail"
-              >2、 仓库日常运作管理（收、发、存、循环盘点及年度盘点）；</span
-            >
-            <span class="require-detail"
-              >3、
-              负责带领班组仓储人员的日常管理，包括晨会召开、KPI管理、考勤等；</span
-            >
-            <span class="require-detail"
-              >4、
-              KPI：仓库准确率，安全事故率，仓库相关物流成本，仓库人员效率，仓库设备效率，仓库面积利用率，内部配送准确率。</span
-            >
+          <div class="search-words">
+            
+            <a>工作地点</a>
+            <a>武汉市</a>
+            <a>襄阳市</a>
+            <a>黄冈市</a>
+            <a>荆州市</a>
+            <a>更多</a>
+           
           </div>
         </div>
-      </div>
+        <div class="search-sidebar">
+          <p>职能类型</p>
+          <p onclick="clear_search()">全部</p>
+          <form style="display: none;" id="form2" action="recruit" method="post" enctype="multipart/form-data" >
+            <input id="submit_data" name="submit_kind_data" value=""/>
+          </form>
+          <div><input onclick="search1()" type="button" value="校园招聘"  
+            style="border:0;background-color: rgba(0, 0, 0, 0); color:#333333"/></div>
+          <div><input onclick="search2()" type="button" value="社会招聘"  
+            style="border:0;background-color: rgba(0, 0, 0, 0); color:#333333"/></div>
+          <div><input onclick="search3()" type="button" value="内部推荐" 
+            style="border:0;background-color: rgba(0, 0, 0, 0); color:#333333"/></div>
+       
+        </div>
+        <!-- <div class="info-card">
+          <span class="title">招聘专员</span>
+          <div>
+          <span>话务专员</span><span>武汉.硚口</span>
+          </div>
+          <div>
+          <span>岗位职责：1.负责打电话。。。。。。。。。。。。。...</span>
+          </div>
+        </div> -->
+        <volist name="list" id="vo">
+          <div class="info-card" id="info-card-{$vo.id}">
+            <a href="__APP__/index.php/Admin/Recruit/recruit_detail?id={$vo.id}" target="_self"
+            style="text-decoration: none; color:#333333">
+            <span class="title">{$vo.title}</span>
+            <div>
+            <span>{$vo.job}</span><span>{$vo.position}</span>
+            </div>
+            <div>
+            <span>{$vo.duty}</span>
+            </div>
+            </a>
+          </div>
+        </volist>
+
+
+
+
+        <div class="page">
+          {$page}
+        </div>
     </div>
     <!-- footer组件 -->
     <include file="Admin@Common/new_footer" />
   </body>
+
+  <volist name="list" id="vo">
+  <!-- <div class="po-id" style="display: none;">{$vo.id}</div> -->
+  <div class="po-title" style="display: none;">{$vo.emergency}</div>
+</volist>
+
+
 </html>
+
+
+<script>
+  var items = document.querySelectorAll(".info-card .title");
+  var total = document.querySelectorAll(".po-title").forEach((item,index)=>{
+    if(item.textContent=='1'){
+      items[index].classList.add("emergency");
+    }
+  });
+
+  function sub()
+  {
+    var query = document.querySelector("#search-job").value;
+    if(query==""){
+      window.alert("请输入内容！");
+    }else{
+      document.querySelector("#form").submit();
+    }
+  }
+  // document.querySelector("#search-btn").addEventListener("click",(e)=>{
+    
+    
+  // })
+  function search1()
+  {
+    document.querySelector("#submit_data").value = 0;
+    document.querySelector("#form2").submit();
+  }
+  function search2()
+  {
+    document.querySelector("#submit_data").value = 1;
+    document.querySelector("#form2").submit();
+  }
+  function search3()
+  {
+    document.querySelector("#submit_data").value = 2;
+    document.querySelector("#form2").submit();
+  }
+  function clear_search()
+  {
+    document.querySelector("#submit_data").value = "";
+    document.querySelector("#form2").submit();
+  }
+
+</script>
+
+
+
+
+
+
