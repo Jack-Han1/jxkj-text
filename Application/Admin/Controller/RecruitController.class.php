@@ -84,8 +84,13 @@ class RecruitController extends CommonController
     public function recruit()
     {
         $map['status'] = 2;
+        if($_GET['pos']!=""){
+            if($_GET['pos']!=-1){
+                $map['pos_id'] = $_GET['pos'];
+            }
+        }
         if($_POST['search-job']!=""){
-            $query = $_POST['search-job'].'%';
+            $query = '%'.$_POST['search-job'].'%';
             $map['job'] = array('like', $query);
         }
         if($_POST['submit_kind_data']!=""){
@@ -121,15 +126,6 @@ class RecruitController extends CommonController
         $this->assign('info', $info);
         $this->display();
     }
-
-    // public function search_job()
-    // {
-    //     $query = $_POST['search-job'] + '%';
-    //     $map['job '] = array('like', $query);
-    //     $res = M('recruit')->where($map)->select();
-    //     echo json_encode($res);
-    // }
-
 
     // 人力资源->薪酬福利
     public function salary()

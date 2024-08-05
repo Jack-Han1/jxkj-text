@@ -299,6 +299,9 @@
         text-align: center;
         font-size: small;
       }
+      .search-words a{
+        text-decoration: none;
+      }
     </style>
   </head>
   <body>
@@ -357,7 +360,8 @@
           <div class="search-box">
             <div class="search-box-left">
               <form id="form" action="recruit" method="post" enctype="multipart/form-data" >
-              <input id="search-job" type="text" name="search-job" value="" placeholder="请输入岗位" maxlength="10"/>
+                <input id="submit_data" name="submit_kind_data" value="" style="display: none;"/>
+                <input id="search-job" type="text" name="search-job" placeholder="请输入岗位" maxlength="10"/>
               </form>
             </div>
             <div class ="search-box-right"><input onclick="sub()" id="search-btn" 
@@ -366,20 +370,20 @@
           <div class="search-words">
             
             <a>工作地点</a>
-            <a>武汉市</a>
-            <a>襄阳市</a>
-            <a>黄冈市</a>
-            <a>荆州市</a>
-            <a>更多</a>
+            <a href="{:U('Recruit/recruit?pos=1')}">武汉市</a>
+            <a href="{:U('Recruit/recruit?pos=2')}">襄阳市</a>
+            <a href="{:U('Recruit/recruit?pos=3')}">黄冈市</a>
+            <a href="{:U('Recruit/recruit?pos=4')}">荆州市</a>
+            <a href="{:U('Recruit/recruit?pos=-1')}">更多</a>
            
           </div>
         </div>
         <div class="search-sidebar">
           <p>职能类型</p>
           <p onclick="clear_search()">全部</p>
-          <form style="display: none;" id="form2" action="recruit" method="post" enctype="multipart/form-data" >
-            <input id="submit_data" name="submit_kind_data" value=""/>
-          </form>
+          <!-- <form style="display: none;" id="form2" action="recruit" method="post" enctype="multipart/form-data" >
+           
+          </form> -->
           <div><input onclick="search1()" type="button" value="校园招聘"  
             style="border:0;background-color: rgba(0, 0, 0, 0); color:#333333"/></div>
           <div><input onclick="search2()" type="button" value="社会招聘"  
@@ -440,8 +444,16 @@
     }
   });
 
+  // 渲染后钩子
+  window.addEventListener("DOMContentLoaded", (event) => {
+    document.querySelector("#search-job").value = get_search_info();
+    console.log(get_search_info());
+  });
+
+
   function sub()
   {
+    save_search_info();
     var query = document.querySelector("#search-job").value;
     if(query==""){
       window.alert("请输入内容！");
@@ -449,31 +461,44 @@
       document.querySelector("#form").submit();
     }
   }
-  // document.querySelector("#search-btn").addEventListener("click",(e)=>{
-    
-    
-  // })
+
+
   function search1()
   {
+    save_search_info();
+    
     document.querySelector("#submit_data").value = 0;
-    document.querySelector("#form2").submit();
+    document.querySelector("#form").submit();
   }
   function search2()
   {
+    save_search_info();
     document.querySelector("#submit_data").value = 1;
-    document.querySelector("#form2").submit();
+    document.querySelector("#form").submit();
   }
   function search3()
   {
+    save_search_info();
     document.querySelector("#submit_data").value = 2;
-    document.querySelector("#form2").submit();
+    document.querySelector("#form").submit();
   }
   function clear_search()
-  {
+  { 
+    save_search_info();
     document.querySelector("#submit_data").value = "";
-    document.querySelector("#form2").submit();
+    document.querySelector("#form").submit();
+  }
+  function save_search_info()
+  {
+    var search_text = document.querySelector("#search-job").value;
+    window.sessionStorage.setItem("query",search_text);  
   }
 
+  function get_search_info()
+  {
+    var info = window.sessionStorage.getItem("query");
+    return info;
+  }
 </script>
 
 
