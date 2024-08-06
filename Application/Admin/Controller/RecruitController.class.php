@@ -80,14 +80,24 @@ class RecruitController extends CommonController
         $this->assign('list', $list);
         $this->display();
     }
+
     // 人力资源->招贤纳士
     public function recruit()
     {
+        $position_mapping = array(
+            1 => "武汉市",
+            2 => "襄阳市",
+            3 => "黄冈市",
+            4 => "荆州市",
+            5 => "宜昌市",
+            6 => "孝感市",
+            7 => "十堰市",
+            8 => "荆门市",
+            9 => "黄石市",
+        );
         $map['status'] = 2;
-        if($_GET['pos']!=""){
-            if($_GET['pos']!=-1){
-                $map['pos_id'] = $_GET['pos'];
-            }
+        if($_POST['submit_pos_data']!=""){
+            $map['pos_id'] = $_POST['submit_pos_data'];
         }
         if($_POST['search-job']!=""){
             $query = '%'.$_POST['search-job'].'%';
@@ -111,14 +121,26 @@ class RecruitController extends CommonController
         $Page->setConfig('theme', '%UP_PAGE% %LINK_PAGE% %DOWN_PAGE%');
         $page  = $Page->show();
         $list =  M('recruit')->where($map)->order('recruit_time desc')->limit($Page->firstRow . ',' . $Page->listRows)->select();
+        $pos_list = M('recruit')->Distinct(true)->field('pos_id')->select();
+        
+        foreach ($pos_list as $key => $val) {
+            $pos_list[$key]['pos_name'] = $position_mapping[$val['pos_id']];
+        }
+
+        
         $this->assign('list', $list);
         $this->assign('page', $page);
+        $this->assign('pos_list', $pos_list);
         $this->display();
     }
 
     public function recruit_detail()
     {
         $info = M('recruit')->where('id=' . $_GET['id'])->find();
+
+        $prev_id = null;
+        $next_id = null;
+        $back_url = null;
 
         $this->assign('prev_id', $prev_id);
         $this->assign('next_id', $next_id);
