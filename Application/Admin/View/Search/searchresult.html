@@ -51,7 +51,7 @@
         }
         .news {
           padding-left: 0;
-          margin-top: 50px;
+          /* margin-top: 50px; */
         }
         .news-item {
           position: relative;
@@ -178,8 +178,7 @@
             width: 165px;
             height: 28px;
             position: absolute;
-            /* left: 545px; */
-            top: 7x;
+            
             /* border: 1px solid red; */
             font-size: 11px;
             /* font-family: "PingFang SC Regular"; */
@@ -202,10 +201,11 @@
             }
         
             .top-snap-nav {
-            display: flex;
-            justify-content: center;
-            background: #fff;
-            box-shadow: 0px 4px 4px 0px rgba(214, 214, 214, 0.25);
+              display: flex;
+              justify-content: center;
+              background: #fff;
+              box-shadow: 0px 4px 4px 0px rgba(214, 214, 214, 0.25);
+              width: 100%;
             }
             .top-snap-nav-item {
             width: 165px;
@@ -304,7 +304,7 @@
         position: relative;
         width: 300px;
         height: 100px;
-        left: -30px;
+        left: -65px;
         margin-bottom: 20px;
         background: #FFFFFF;
         border-radius: 8px;
@@ -356,6 +356,14 @@
         column-gap: 100px;
         /* margin-top: 50px; */
       }
+
+      /* 隐藏滑动条 */
+      html::-webkit-scrollbar{
+  	      display: none;
+      } 
+      html{
+	      scrollbar-width: none;
+      }
       </style>
 
       
@@ -370,6 +378,7 @@
         <div class="child-nav-item"><span>招聘信息</span></div>
       </div> -->
       <!-- <include file="Admin@Common/snap_nav" /> -->
+       <div style="position: relative; width: 100%;">
       <div class="nav-tab"></div>
 <div class="top-snap-nav">
     <div class="top-snap-nav-item">
@@ -398,8 +407,10 @@
     </div>
     
   </div>
+</div>
   <article class="nav-page select-page" id="item-1">
     <div style="width:100%; text-align: center;  height: 50px; line-height: 50px;font-size:15px;">共{$news_cnt}条搜索结果</div>
+    <div class="w-960">
     <ul class="news">
         <volist name="news_list" id="vo">
           <li class="news-item">
@@ -412,6 +423,7 @@
           </li>
         </volist>
         </ul>
+      </div>
   </article>
   <article class="nav-page" id="item-2">
     <div style="width:100%; text-align: center; height: 50px; line-height: 50px; font-size:15px;">共{$magazines_cnt}条搜索结果</div>
