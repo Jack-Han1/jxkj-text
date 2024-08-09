@@ -106,6 +106,7 @@
         margin: 15px;
       }
       .business-item {
+        position: relative;
         width: 466px;
         height: 240px;
         background-color: #fff;
@@ -124,6 +125,10 @@
       .business-item:hover {
         box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.16);
         transform: scale3d(1.01, 1.01, 1.01);
+      }
+      .business-item span {
+        position: relative;
+        bottom: 0px;
       }
       .trend-top {
         width: 962px;
@@ -149,6 +154,9 @@
         margin-right: 38px;
         letter-spacing: 1px;
       }
+      .trend-top-more:hover {
+        color: #5017a7;
+      }
       .trend-bottom {
         width: 962px;
         margin: 0 auto;
@@ -165,7 +173,7 @@
       }
       .trend-item:hover {
         box-shadow: 2px 10px 12px rgba(0, 0, 0, 0.16);
-        /* transform: scale3d(1.01, 1.01, 1.01); */
+        /* transform: scale3d(1.06, 1.06, 1.06); */
       }
       .trend-item-time {
         color: #381c62;
@@ -212,7 +220,14 @@
         overflow: hidden;
         cursor: pointer;
       }
-
+      /* .trend-item-img img::after{
+        content: "" ;
+        border: 2px solid red ;
+        width: 100% ;
+        height: 100px ;
+        left: 10px;
+        top:10px;
+      } */
       .trend-item-img img {
         width: 243px;
         height: 142px;
@@ -221,6 +236,16 @@
       }
       .trend-item-img img:hover {
         transform: scale(1.05);
+      }
+      .trend-item-bottom {
+        /* width: 320px; */
+        width: 0px;
+        height: 4px;
+        margin-top: 38px;
+        margin-left: -38px;
+        background-color: #5017a7;
+        -webkit-transition: all .3s cubic-bezier(0.81, 0.24, 0.79, 0.4);
+        transition: all .3s cubic-bezier(0.81, 0.24, 0.79, 0.4);
       }
       .about-us {
         /* border: 1px solid red; */
@@ -423,43 +448,56 @@
       <!-- 业务领域 -->
       <p class="business-title">业务领域</p>
       <div class="business-box-top business-box-flex">
-        <a
-          href="__APP__/index.php/Admin/Industry/Campus"
+        <a onclick="delayHref('__APP__/index.php/Admin/Industry/Campus?loading=1',300)"
           target="_self"
           class="business-click"
-          ><div class="business-item">智慧校园</div></a
+          ><div class="business-item"><span>智慧校园</span></div></a
         >
 
-        <a
-          href="__APP__/index.php/Admin/Industry/Energy"
+        <a onclick="delayHref('__APP__/index.php/Admin/Industry/Energy?loading=1',300)"
           target="_self"
           class="business-click"
         >
-          <div class="business-item">光伏电能投资运营</div></a
+          <div class="business-item"><span>光伏电能投资运营</span></div></a
         >
       </div>
       <div class="business-box-bottom business-box-flex">
         <a
-          href="__APP__/index.php/Admin/Industry/Communicate"
+          onclick="delayHref('__APP__/index.php/Admin/Industry/Communicate?loading=1',300)"
           target="_self"
           class="business-click"
-          ><div class="business-item">通信业务</div>
+          ><div class="business-item"><span>通信业务</span></div>
         </a>
         <a
-          href="__APP__/index.php/Admin/Industry/Urban"
+          onclick="delayHref('__APP__/index.php/Admin/Industry/Urban?loading=1',300)"
           target="_self"
           class="business-click"
         >
-          <div class="business-item">智慧城管</div></a
+          <div class="business-item"><span>智慧城管</span></div></a
         >
       </div>
       <!-- 精信动态 -->
       <div class="trend-top">
         <span class="trend-top-left">精信动态</span>
-        <span class="trend-top-more">查看更多>>></span>
+        <a class="trend-top-more" href="__APP__/index.php/Admin/News/News">查看更多>>></a>
       </div>
       <div class="trend-bottom">
-        <div class="trend-item">
+        <volist name="top_news_list" id="vo">
+          <div class="trend-item">
+            <div class="trend-item-time">{$vo.date}</div>
+            <div class="trend-item-title">
+              {$vo.name}
+            </div>
+            <a href="__APP__/index.php/Admin/News/news_detail?id={$vo.id}">
+            <div class="trend-item-button">了解更多</div>
+            </a>
+            <div class="trend-item-img">
+              <img src="__PUBLIC__/images/jxkj_test.jpg" alt="" />
+            </div>
+            <div class="trend-item-bottom"></div>
+          </div>
+        </volist>
+        <!-- <div class="trend-item">
           <div class="trend-item-time">2022-09-25</div>
           <div class="trend-item-title">
             泰安市各级领导专班莅临我司调研指导工作
@@ -478,17 +516,7 @@
           <div class="trend-item-img">
             <img src="__PUBLIC__/images/jxkj_test.jpg" alt="" />
           </div>
-        </div>
-        <div class="trend-item">
-          <div class="trend-item-time">2022-09-25</div>
-          <div class="trend-item-title">
-            泰安市各级领导专班莅临我司调研指导工作
-          </div>
-          <div class="trend-item-button">了解更多</div>
-          <div class="trend-item-img">
-            <img src="__PUBLIC__/images/jxkj_test.jpg" alt="" />
-          </div>
-        </div>
+        </div> -->
       </div>
       <!-- 关于我们 -->
       <div class="about-us clearfix">
@@ -595,6 +623,52 @@
           // 执行其他操作
         }
       });
+
+      const top_news = document.querySelectorAll(".trend-item");
+      top_news.forEach((news) => {
+        news.addEventListener("mouseover", function(e){
+          const bottom = news.querySelector(".trend-item-bottom");
+          const image = news.querySelector("img");
+          image.style.transform = "scale(1.05)";
+          bottom.style.width = "320px";
+        });
+        news.addEventListener("mouseout", function(e){
+            const bottom = news.querySelector(".trend-item-bottom");
+            const image = news.querySelector("img");
+            image.style.transform = "scale(1)";
+            bottom.style.width = "0px";
+        });
+      }
+    );
+    function delayHref(url,delay){
+      setTimeout("top.location.href = '" + url + "'", delay);
+    }
+    const business_items = document.querySelectorAll(".business-item");
+    const business_text = document.querySelectorAll(".business-item span");
+    business_items.forEach((item, key)=>{
+      item.addEventListener("click", function(e){
+        let text = business_text[key];
+        business_items.forEach((item,key1)=>{
+          if(key1 != key){
+            item.style.transitionDuration = ".4s";
+            if(key1 == 0 || key1 ==2){
+              item.style.transform = "translateX(-200px)";
+            }else{
+              item.style.transform = "translateX(+200px)";
+            }
+            item.style.opacity = 0;
+          }
+        });
+        text.style.transition = "all .3s ease-in-out";
+        text.style.bottom = "20px";
+        text.style.opacity = 0;
+        item.style.zIndex = "9999";
+        item.style.transitionDuration = ".7s";
+        item.style.transitionDelay = ".3s";
+        item.style.transform = "scale3d(6,10,6)";
+      });
+    });
     </script>
   </body>
 </html>
+
