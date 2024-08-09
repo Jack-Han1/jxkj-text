@@ -444,6 +444,7 @@ class AboutController extends CommonController
     public function edit_magazine(){
         $id=I("get.id");
         $info=M("magazine")->where('id='.$id)->find();
+        
         // $info['content']=htmlentities($info['content']);
         $this->assign('action_check',CONTROLLER_NAME."/index");
         $this->assign('info',$info);
@@ -460,6 +461,7 @@ class AboutController extends CommonController
         $save['title'] = $_POST['title'];
         $save['img'] = $_POST['img'];
         $save['url'] = $_POST['url'];
+        $save['create_id'] = session('user.id');
         //$save['url'] = 'About/introduce';
         $save['update_time'] = date("Y-m-d H:i:s" ,time());
 //        $save['status'] = 1;
@@ -475,7 +477,7 @@ class AboutController extends CommonController
     public function del_magazine(){
         $id = $_POST['id'];
         $update_data['status'] = 0 ;
-        // $update_data['create_id'] = session('user.id');
+        $update_data['create_id'] = session('user.id');
         $update_data['update_time'] = date("Y-m-d H:i:s",time());
         $re = M('magazine')->where('id='.$id)->save($update_data);
         if($re){
@@ -514,7 +516,8 @@ class AboutController extends CommonController
             'date'=>$_POST['date'],
             'sort'=>0,
             'update_time'=>date("Y-m-d H:i:s",time()),
-            'status'=>1
+            'status'=>1,
+            'create_id'=> session('user.id'),
         );
         $content->add($data);        
         $this->redirect('index');

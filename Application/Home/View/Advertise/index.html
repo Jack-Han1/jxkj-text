@@ -30,8 +30,9 @@
         	<table class="table">
             	<tr>
                 	<th>ID</th>
-                    <th>名称</th>
+                    <th>标题</th>
                     <th>所属菜单</th>
+                    <th>招聘地址</th>
                     <th>最后更新时间</th>
                     <th>状态</th>
                     <th>顺序</th>
@@ -44,10 +45,21 @@
                     <else/>
                     <volist name="list" id="vo">
                         <tr>
-                            <td>{$vo.show_id}</td>
-                            <td>{$vo.name}</td>
-                            <td>{$vo.menu_name}</td>
-                            <td>{$vo.create_time}</td>
+                            <td>{$vo.id}</td>
+                            <td>{$vo.title}</td>
+                            <td>
+                                <if condition="$vo.kind eq 0">
+                                    校招
+                                </if>
+                                <if condition="$vo.kind eq 1">
+                                    社招
+                                </if>
+                                <if condition="$vo.kind eq 2">
+                                    内推
+                                </if>
+                            </td>
+                            <td>{$vo.position}</td>
+                            <td>{$vo.recruit_time}</td>
                             <td>
                                 <if condition="$vo.status eq -1">
                                     未通过
@@ -61,13 +73,13 @@
                             </td>
                             <td>{$vo.sort}</td>
                             <td>
-                                 <span style="width: 205px;display: inline-block;text-align: left;">
-                                <a href="__APP__/index.php/Admin/Recruit/index?id={$vo.id}" target="_blank">查看</a>
-                                <a href="__APP__/index.php/Home/Advertise/edit?id={$vo.id}">编辑</a>
+                                 <span style="width: 160px;display: inline-block;text-align: left;">
+                                <a href="__APP__/index.php/Admin/Recruit/recruit_detail?id={$vo.id}" target="_blank">查看</a>
+                                <a href="__APP__/index.php/Home/Advertise/new_edit?id={$vo.id}">编辑</a>
                                 <a style="cursor: pointer;" onclick="del({$vo.id})">删除</a>
-                                     <if condition="$vo.review eq 1">
+                                     <!-- <if condition="$vo.review eq 1">
                                          <a href="__APP__/index.php/Home/Advertise/review?id={$vo.id}">审核</a>
-                                     </if>
+                                     </if> -->
                                      </span>
                             </td>
                         </tr>
