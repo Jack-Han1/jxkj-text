@@ -80,7 +80,7 @@
         margin-left: 160px;
       }
       .news-item-text {
-        height: 30px;
+        height: 35px;
         width: 782px;
         color: #666;
         font-family: "PingFang SC Regular";
@@ -90,6 +90,7 @@
         left: 18px;
         top: 47px;
         margin-left: 160px;
+        overflow: hidden;
       }
       .news-item-date {
         height: 13px;
@@ -176,7 +177,7 @@
           <volist name="list" id="vo">
             <li class="news-item">
               <a href="__APP__/index.php/Admin/News/news_detail?id={$vo.id}">
-                <img src="" alt="" class="news-item-img" />
+                <img data-src="http://test:8888//Uploads/2018-08-09/5b6bb02d307dc.png" alt="" class="news-item-img lazyload" />
                 <p class="news-item-title">{$vo.name}</p>
                 <p class="news-item-text">{$vo.abstract}</p>
                 <p class="news-item-date">{$vo.year}-{$vo.data}</p>
@@ -241,3 +242,6 @@
     </div>
   </body>
 </html>
+
+<script src="__PUBLIC__/Js/my-lazyload.js"></script>
+

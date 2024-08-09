@@ -177,7 +177,7 @@
 
               <div class="magazine-item">
                 <a href="{$vo.url}" target="_blank">
-                  <img src="{$vo.img}" alt="" class="magazine-item-img" />
+                  <img data-src="{$vo.img}" alt="" class="magazine-item-img lazyload" />
                   <p class="magazine-item-title">{$vo.title}</p>
                   <p class="magazine-item-text">{$vo.text}</p>
                   <p class="magazine-item-date">{$vo.date}</p>
@@ -194,3 +194,5 @@
     <include file="Admin@Common/new_footer" />
   </body>
 </html>
+
+<script src="__PUBLIC__/Js/my-lazyload.js"></script>
