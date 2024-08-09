@@ -103,6 +103,7 @@ class SearchController extends CommonController
 
 		$query = '%'.$_GET['search_word'].'%';
         $map1['name|abstract'] = array('like', $query);
+        $map1['status'] = 2;
 
         $article_cnt =  M('article')->where($map1)->count();
         $res = M('article')->where($map1)->order('article_time desc')->select();
@@ -116,6 +117,7 @@ class SearchController extends CommonController
         }
 
         $map2['title|text'] = array('like', $query);
+        $map2['status'] = 1;
         $magazine_cnt =  M('magazine')->where($map2)->count();
         $res = M('magazine')->where($map2)->select();
 
@@ -130,6 +132,7 @@ class SearchController extends CommonController
         }
 
         $map3['job|duty'] = array('like', $query);
+        $map3['status'] = 2;
         $recruit_cnt =  M('recruit')->where($map3)->count();
         $res = M('recruit')->where($map3)->select();
 
