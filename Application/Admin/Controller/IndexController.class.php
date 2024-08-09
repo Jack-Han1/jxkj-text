@@ -44,6 +44,11 @@ class IndexController extends CommonController
 //     }
     // ------------------------------------------------------------------------------------
     public function index(){
+        $top_news = M('article')->where('menu_id=19 and status=2 and top=1')->order('sort asc, article_time desc')->limit(0,3)->select();
+        foreach ($top_news as $key => $val) {
+            $top_news[$key]['date'] = substr($val['article_time'],0,10);
+        }
+        $this->assign("top_news_list", $top_news);
         $this->display();
     }
 

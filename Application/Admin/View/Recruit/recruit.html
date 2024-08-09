@@ -606,6 +606,16 @@
     console.log(query, kind_id, pos_id)
     document.querySelector("#form").submit();
   }
+
+  window.addEventListener("keydown",(e)=>{
+      if(e.keyCode === 13){
+        var Input = document.getElementById('search-job');
+        if (Input == document.activeElement) {
+            sub();
+        }
+      }
+      }
+    );
 </script>
 
 
