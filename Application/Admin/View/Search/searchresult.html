@@ -59,6 +59,7 @@
           border-bottom: 1px solid #d5dee5;
           margin-left: 100px;
           /* list-style: none; */
+          display: none;
         }
         .news-item-img {
           width: 160px;
@@ -240,7 +241,7 @@
         display: grid;
         grid-template-columns: repeat(3, 298px);
         /* grid-template-rows: repeat(1, 186px); */
-        row-gap: 150px;
+        row-gap: 30px;
         column-gap: 33px;
         margin-bottom: 150px;
        }
@@ -250,6 +251,7 @@
         padding: 10px;
         background-color: #fff;
         /* border: 1px solid red; */
+        display: none;
       }
       .magazine-item-img {
         display: block;
@@ -310,6 +312,7 @@
         background: #FFFFFF;
         border-radius: 8px;
         box-shadow: 0px 0px 3px 0px #D9D9D9;
+        display: none;
       }
 
       .info-card .title{
@@ -431,7 +434,6 @@
     <div class="w-960">
         <div class="magazine-row">
     <volist name="magazines_list" id="vo">
-
         <div class="magazine-item">
           <a href="{$vo.url}" target="_blank">
             <img data-src="{$vo.img}" alt="" class="magazine-item-img lazyload" />
@@ -471,6 +473,8 @@
   </article>
 
     </div>
+     
+    
     
 </body>
 
@@ -489,15 +493,18 @@
 
     
 <script>
+    var page_index = 1;
     function getPage1_callback(){
-        console.log("get1...");
-        // 此处发送请求
+      page_index = 1;
+      top_pos = 500;
     }
     function getPage2_callback(){
-        console.log("get2...");
+      page_index = 2;
+      top_pos = 400;
     }
     function getPage3_callback(){
-        console.log("get3...");
+      page_index = 3;
+      top_pos = 40;
     }
     function initNav(){
         const items = document.querySelectorAll(".top-snap-nav-item");
@@ -569,6 +576,78 @@
       items[index].classList.add("emergency");
     }
   });
+</script>
+
+<script>
+  var news_items = document.querySelectorAll(".news-item");
+  var news_len = news_items.length;
+  var viewNewsCounter = function(n) {
+    let cnt = n;
+    return function() {
+      for(var i=n;i<n+10&&i<news_len;i++)
+      {
+        news_items[i].style.display = "block";
+      }
+      return n+=10;
+    };
+  };
+  const view_newscounter = viewNewsCounter(0);
+  view_newscounter();
+  
+  var magazine_items = document.querySelectorAll(".magazine-item");
+  var magazine_len = magazine_items.length;
+  var viewMagazineCounter = function(n) {
+    let cnt = n;
+    return function() {
+      for(var i=n;i<n+9&&i<magazine_len;i++)
+      {
+        magazine_items[i].style.display = "block";
+      }
+      return n+=9;
+    };
+  };
+  const view_magazinecounter = viewMagazineCounter(0);
+  view_magazinecounter();
+
+  var recruit_items = document.querySelectorAll(".info-card");
+  var recruit_len = recruit_items.length;
+  var viewRecruitCounter = function(n) {
+    let cnt = n;
+    return function() {
+      for(var i=n;i<n+15&&i<recruit_len;i++)
+      {
+        recruit_items[i].style.display = "block";
+      }
+      return n+=15;
+    };
+  };
+  const view_recruitcounter = viewRecruitCounter(0);
+  view_recruitcounter();
+
+  var top_pos = 500;
+  window.addEventListener("mousewheel",(e)=>{
+      var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+      console.log(scrollTop)
+      if (scrollTop >= top_pos){
+        switch (page_index){
+          case 1:
+            view_newscounter();
+            top_pos+=500;
+            break;
+          case 2:
+            view_magazinecounter();
+            top_pos+=400;
+            break;
+          case 3:
+            view_recruitcounter();
+            top_pos+=40;
+            break;
+        }
+       
+      }
+    });
+
+  
 </script>
 
 <script src="__PUBLIC__/Js/my-lazyload.js"></script>
