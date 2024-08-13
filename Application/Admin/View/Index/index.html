@@ -251,7 +251,7 @@
         /* border: 1px solid red; */
         width: 962px;
         margin: 0 auto;
-        margin-top: 130px;
+        margin-top: 70px;
       }
       .about-us-left {
         width: 417px;
@@ -263,6 +263,7 @@
         font-size: 24px;
         font-weight: 600;
         margin-bottom: 28px;
+        text-align: center;
       }
       .about-us-text {
         color: #666;
@@ -271,6 +272,7 @@
         font-size: 14px;
         font-weight: 400;
         line-height: 28px; /* 200% */
+        text-indent:2em;
       }
       .about-us-more {
         margin-top: 55px;
@@ -360,6 +362,32 @@
       .to-top-show {
         bottom: 100px;
       }
+
+    /* 轮播图样式 */
+    .my-carousel-item {
+        width: 280px;
+        height: 180px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        border-radius: 3px;
+        transition: transform 1s ease-in-out;
+        object-fit: cover;
+    }
+
+    .my-carousel-container {
+        /* position: absolute; */
+        width: 850px;
+        height: 250px;
+        /* background-color: rgb(255, 255, 255); */
+        perspective: 800px;
+        transform-style: preserve-3d;
+        margin: 0 auto;
+        margin-top: 50px;
+    }
     </style>
   </head>
   <body>
@@ -519,7 +547,7 @@
         </div> -->
       </div>
       <!-- 关于我们 -->
-      <div class="about-us clearfix">
+      <!-- <div class="about-us clearfix">
         <div class="about-us-left">
           <p class="about-us-title">关于我们</p>
           <a
@@ -539,6 +567,21 @@
           >
         </div>
         <div class="about-us-video"></div>
+      </div> -->
+      <div class="about-us clearfix">
+        <p class="about-us-title">关于我们</p>
+        <p class="about-us-text">
+          湖北精英盛华信息股份有限公司（简称“精信科技”），是一家从事数字化精准营销和互联网信息服务的高新技术企业，通过通信业务、智慧校园、智慧城管和光伏电能投资运营等产品和服务，致力于打造客户满意的精准营销服务专家。
+          从2007年成立以来，精信科技经历十余年的发展，形成以北京，杭州，武汉为中心，辐射全国的发展大格局，目前在湖北，北京，浙江，广东，广西，山西，甘肃，辽宁，安徽，新疆，河南，河北，江苏，海南等省市设有20余家分支机构，发展规模近千人，
+          并拥有一套覆盖全国的成熟的运营服务体系。
+        </p>
+        <div class="my-carousel-container">
+          <img class="my-carousel-item" alt = "1" src="__PUBLIC__/images/1.jpg">
+          <img class="my-carousel-item" alt = "2" src="__PUBLIC__/images/2.jpg">
+          <img class="my-carousel-item" alt = "3" src="__PUBLIC__/images/3.png">
+          <img class="my-carousel-item" alt = "4" src="__PUBLIC__/images/a.png">
+          <img class="my-carousel-item" alt = "5" src="__PUBLIC__/images/ad.png">
+        </div>
       </div>
       <!-- 合作案例 -->
       <div class="cooperation-case">
@@ -668,7 +711,64 @@
         item.style.transform = "scale3d(14,19,14)";
       });
     });
+
+
+      //轮播图
+      const carouselImages = document.querySelectorAll(".my-carousel-item");
+      const imageCount = carouselImages.length;
+      let currentIndex = 0;
+      let timerId;
+
+      function initCarousel() {
+          setupView();
+          bindEvents();
+          startAutoPlay();
+      }
+
+      initCarousel();
+
+      function setupView() {
+          const halfLength = Math.floor(imageCount / 2);
+          for (let i = 0; i < halfLength; i++) {
+              let leftIndex = (currentIndex - i - 1 + imageCount) % imageCount;
+              let rightIndex = (currentIndex + i + 1) % imageCount;
+              carouselImages[leftIndex].style.transform = `translateX(${(-130) * (i + 1)}px) translateZ(${200 - i * 100}px) rotateY(30deg)`;
+              carouselImages[rightIndex].style.transform = `translateX(${130 * (i + 1)}px) translateZ(${200 - i * 100}px) rotateY(-30deg)`;
+          }
+          carouselImages[currentIndex].style.transform = `translateZ(300px)`;
+      }
+
+      function bindEvents() {
+          for (let i = 0; i < imageCount; i++) {
+              (function(index) {
+                  carouselImages[index].addEventListener('click', function () {
+                      currentIndex = index;
+                      setupView();
+                  });
+                  carouselImages[index].addEventListener('mouseenter', function () {
+                      clearInterval(timerId);
+                      anime();
+                  });
+
+                  carouselImages[index].addEventListener('mouseout', function () {
+                      startAutoPlay();
+                  });
+              })(i);
+          }
+      }
+
+      function startAutoPlay() {
+          timerId = setInterval(function () {
+              currentIndex = (currentIndex + 1) % imageCount;
+              setupView();
+          }, 2000);
+      }
+
+      function anime() {
+          carouselImages[currentIndex].style.transform = `translateZ(350px)`;
+      }
     </script>
+
   </body>
 </html>
 
