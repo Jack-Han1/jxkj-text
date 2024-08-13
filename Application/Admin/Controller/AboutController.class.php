@@ -130,9 +130,18 @@ class AboutController extends CommonController
     // 走进精信->精信月刊
     public function magazine()
     {
-        // $staff = M('magazine');
-        $list = M('magazine')->where(array('status' => 1))
-        ->order('sort asc')->select();
+        $count = M('magazine')->where(array('status' => 1))->count();
+        $Page  = new \Think\Page($count, 9);
+        $Page->setConfig('prev', '上一页');
+        $Page->setConfig('next', '下一页');
+        $Page->setConfig('last', '末页');
+        $Page->setConfig('first', '首页');
+        $Page->setConfig('theme', '%UP_PAGE% %LINK_PAGE% %DOWN_PAGE%');
+        $page  = $Page->show();
+        $list = M('magazine')->where(array('status' => 1))->limit($Page->firstRow.','.$Page->listRows)
+        ->order('sort asc,update_time desc')->select();
+
+        $this->assign('page',$page);
         $this->assign('list', $list);
         $this->display();
     }

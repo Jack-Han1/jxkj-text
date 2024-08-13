@@ -66,8 +66,7 @@
        .magazine-row {
         display: grid;
         grid-template-columns: repeat(3, 298px);
-        grid-template-rows: repeat(1, 186px);
-        row-gap: 150px;
+        row-gap: 50px;
         column-gap: 33px;
         margin-bottom: 150px;
        }
@@ -119,6 +118,56 @@
       }
       .magazine-item a{
         text-decoration: none;
+      }
+      .page {
+        /* border: 1px solid red; */
+        text-align: center;
+        text-decoration: none;
+        margin-top: 30px;
+      }
+      .page div {
+        display: inline-block;
+      }
+      .page .current,
+      .page .num,
+      .page .next,
+      .page .prev {
+        margin: 0 3px;
+        font-size: 9px;
+        line-height: 22px;
+        text-decoration: none;
+      }
+      .page .current {
+        float: left;
+        display: block;
+        width: 22px;
+        height: 22px;
+        background-color: rgb(56, 28, 98);
+        color: white;
+      }
+      .page .num {
+        float: left;
+        display: block;
+        width: 22px;
+        height: 22px;
+        background-color: #fff;
+        color: rgb(102, 102, 102);
+      }
+      .page .next {
+        float: left;
+        display: block;
+        width: 46px;
+        height: 22px;
+        background-color: #fff;
+        color: rgb(102, 102, 102);
+      }
+      .page .prev {
+        float: left;
+        display: block;
+        width: 46px;
+        height: 22px;
+        background-color: #fff;
+        color: rgb(102, 102, 102);
       }
     </style>
   </head>
@@ -186,6 +235,9 @@
 
             </volist>
 
+          </div>
+          <div class="page clearfix">
+            {$page}
           </div>
         </div>
       </div>

@@ -368,6 +368,30 @@
       html{
 	      scrollbar-width: none;
       }
+
+      /* 回到顶部 */
+      .to-top {
+        /* border: 1px solid red; */
+        /* background-color: #381c62; */
+        background-color: #cccccc80;
+        height: 44px;
+        width: 44px;
+        color: #fff;
+        line-height: 44px;
+        text-align: center;
+        border-radius: 50%;
+        position: fixed;
+        right: 15%;
+        bottom: -50px;
+        transition: all 0.3s ease-out;
+        z-index: 999;
+      }
+      .to-top:hover {
+        background-color: #b5b5b580;
+      }
+      .to-top-show {
+        bottom: 100px;
+      }
       </style>
 
       
@@ -475,7 +499,28 @@
     </div>
      
     
-    
+     <!-- 回到顶部 -->
+     <a href="#top" class="back-to-top">
+      <div class="to-top" id="to-top">
+        <svg
+          t="1712738133671"
+          class="icon"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="13167"
+          width="22"
+          height="22"
+        >
+          <path
+            d="M479.139 199.82a46.452 46.452 0 0 1 65.722 0l279.366 279.365a46.499 46.499 0 0 1-65.769 65.723l-199.913-199.96v632.507a46.545 46.545 0 0 1-41.1 46.22L512 1024a46.545 46.545 0 0 1-46.545-46.545V344.948l-199.913 199.96a46.499 46.499 0 0 1-61.347 3.91l-4.422-3.91a46.499 46.499 0 0 1 0-65.723zM878.545 0c28.905 0 52.364 20.852 52.364 46.545s-23.459 46.546-52.364 46.546h-733.09c-28.905 0-52.364-20.852-52.364-46.546S116.55 0 145.455 0z"
+            fill="#ffffff"
+            p-id="13168"
+          ></path>
+        </svg>
+      </div>
+    </a>
+
 </body>
 
 
@@ -489,6 +534,20 @@
     console.log(search_data);
   });
     
+    // 回到顶部
+    window.addEventListener("scroll", function () {
+        var scrollDistance = window.scrollY;
+        const topElement = document.getElementById("to-top");
+
+        if (scrollDistance > 180) {
+          topElement.classList.add("to-top-show");
+          // console.log('滚动距离超过200px');
+        } else {
+          topElement.classList.remove("to-top-show");
+          // console.log('滚动距离不超过200px');
+          // 执行其他操作
+        }
+      });
 </script>
 
     
