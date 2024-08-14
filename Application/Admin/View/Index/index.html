@@ -110,26 +110,80 @@
         width: 466px;
         height: 240px;
         background-color: #fff;
+        font-family: "PingFang SC Regular";
         /* margin: 15px; */
+        /* background-image: url('__PUBLIC__/images/cp02.jpg');
+        background-size: 466px 240px; */
         color: #333;
-        font-size: 24px;
-        line-height: 240px;
-        text-align: center;
-        font-weight: 600;
         border-radius: 5px;
         cursor: pointer;
         /* 动画 */
         box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.08);
         transition: all 0.3s cubic-bezier(0, 0, 0.5, 1);
       }
+      .business-item-img {
+        width: 466px;
+        height: 240px;
+        object-fit: cover;
+      }
       .business-item:hover {
         box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.16);
         transform: scale3d(1.01, 1.01, 1.01);
       }
-      .business-item span {
-        position: relative;
-        bottom: 0px;
+      .business-item p:nth-child(1){
+        position: absolute;
+        color: #fff;
+        font-size: 24px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        top: 160px;
+        left: 35px;
+        z-index: 9;
+        transition: all .4s ease-in-out;
       }
+      .business-item p:nth-child(2){
+        position: absolute;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: 1px;
+        top: 196px;
+        left: 35px;
+        z-index: 9;
+        transition: all .4s ease-in-out;
+      }
+
+      .business-item-mask {
+        position: absolute;
+        opacity: 1;
+        height: 70%;
+        width: 100%;
+        background: linear-gradient(
+          rgba(0, 0, 0, 0) 0%,
+          rgba(0, 0, 0, 0.3) 70%
+        );
+        top: auto;
+        bottom: 0px;
+        z-index: 2;
+      }
+
+      .business-item:hover .business-item-mask {
+        opacity: 1;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+        background-image: url("__PUBLIC__/images/mask_grad.png");
+        background-repeat: repeat-x;
+        background-position: left bottom;
+        background-size: auto 100%;
+      }
+
+      .business-item:hover p{
+        transform: translateY(-18px);
+      }
+
       .trend-top {
         width: 962px;
         height: 133px;
@@ -388,6 +442,8 @@
         margin: 0 auto;
         margin-top: 50px;
     }
+
+    
     </style>
   </head>
   <body>
@@ -476,32 +532,69 @@
       <!-- 业务领域 -->
       <p class="business-title">业务领域</p>
       <div class="business-box-top business-box-flex">
-        <a onclick="delayHref('__APP__/index.php/Admin/Industry/Campus?loading=1',500)"
+        <!-- <a onclick="delayHref('__APP__/index.php/Admin/Industry/Campus?loading=1',500)"
           target="_self"
           class="business-click"
           ><div class="business-item"><span>智慧校园</span></div></a
+        > -->
+        <a href="__APP__/index.php/Admin/Industry/Campus?loading=1"
+          target="_self"
+          class="business-click"
+          ><div class="business-item">
+            <p>智慧校园</p>
+            <p>建立安全、便捷、开放的校园成长平台</p>
+            <img
+            data-src='__PUBLIC__/images/cp02.jpg'
+            alt=""
+            class="business-item-img lazyload"/>
+
+            <div class="business-item-mask"></div></div></a
         >
 
-        <a onclick="delayHref('__APP__/index.php/Admin/Industry/Energy?loading=1',500)"
+        <a href="__APP__/index.php/Admin/Industry/Energy?loading=1"
           target="_self"
           class="business-click"
         >
-          <div class="business-item"><span>光伏电能投资运营</span></div></a
+          <div class="business-item">
+            <p>光伏电能投资运营</p>
+            <p>智掌握储能核心技术，打造储能产业“中国芯”</p>
+            <img
+            data-src='__PUBLIC__/images/cp02.jpg'
+            alt=""
+            class="business-item-img lazyload"/>
+
+            <div class="business-item-mask"></div></div></a
         >
       </div>
       <div class="business-box-bottom business-box-flex">
         <a
-          onclick="delayHref('__APP__/index.php/Admin/Industry/Communicate?loading=1',500)"
+          href=__APP__/index.php/Admin/Industry/Communicate?loading=1"
           target="_self"
           class="business-click"
-          ><div class="business-item"><span>通信业务</span></div>
+          ><div class="business-item">
+            <p>通信业务</p>
+            <p>智数字化移动营销解决方案和精准营销服务专家</p>
+            <img
+            data-src='__PUBLIC__/images/cp02.jpg'
+            alt=""
+            class="business-item-img lazyload"/>
+
+            <div class="business-item-mask"></div></div>
         </a>
         <a
-          onclick="delayHref('__APP__/index.php/Admin/Industry/Urban?loading=1',500)"
+          href="__APP__/index.php/Admin/Industry/Urban?loading=1"
           target="_self"
           class="business-click"
         >
-          <div class="business-item"><span>智慧城管</span></div></a
+          <div class="business-item">
+            <p>智慧城管</p>
+            <p>监管互动、分工合作、统一指挥、管理有序的城市管理创新模式</p>
+            <img
+            data-src='__PUBLIC__/images/cp02.jpg'
+            alt=""
+            class="business-item-img lazyload"/>
+
+            <div class="business-item-mask"></div></div></a
         >
       </div>
       <!-- 精信动态 -->
@@ -572,7 +665,7 @@
         <p class="about-us-title">关于我们</p>
         <p class="about-us-text">
           湖北精英盛华信息股份有限公司（简称“精信科技”），是一家从事数字化精准营销和互联网信息服务的高新技术企业，通过通信业务、智慧校园、智慧城管和光伏电能投资运营等产品和服务，致力于打造客户满意的精准营销服务专家。
-          从2007年成立以来，精信科技经历十余年的发展，形成以北京，杭州，武汉为中心，辐射全国的发展大格局，目前在湖北，北京，浙江，广东，广西，山西，甘肃，辽宁，安徽，新疆，河南，河北，江苏，海南等省市设有20余家分支机构，发展规模近千人，
+          从2007年成立以来，精信科技经历十余年的发展，形成以北京、杭州、武汉为中心，辐射全国的发展大格局，目前在湖北、北京、浙江、广东、广西、山西、甘肃、辽宁、安徽、新疆、河南、河北、江苏、海南等省市设有20余家分支机构，发展规模近千人，
           并拥有一套覆盖全国的成熟的运营服务体系。
         </p>
         <div class="my-carousel-container">
@@ -635,6 +728,7 @@
     <!-- swiper.js -->
     <script src="../../../../Public/swiper/swiper-bundle.min.js"></script>
     <!-- <script src="https://unpkg.com/swiper/swiper-bundle.min.js"> </script> -->
+    <script src="__PUBLIC__/Js/my-lazyload.js"></script>
     <script type="text/javascript">
       var mySwiper = new Swiper(".swiper", {
         // direction: "horizontal", // 垂直切换选项
@@ -686,31 +780,33 @@
     function delayHref(url,delay){
       setTimeout("top.location.href = '" + url + "'", delay);
     }
-    const business_items = document.querySelectorAll(".business-item");
-    const business_text = document.querySelectorAll(".business-item span");
-    business_items.forEach((item, key)=>{
-      item.addEventListener("click", function(e){
-        let text = business_text[key];
-        business_items.forEach((item,key1)=>{
-          if(key1 != key){
-            item.style.transitionDuration = ".4s";
-            if(key1 == 0 || key1 ==2){
-              item.style.transform = "translateX(-200px)";
-            }else{
-              item.style.transform = "translateX(+200px)";
-            }
-            item.style.opacity = 0;
-          }
-        });
-        text.style.transition = "all .3s ease-out";
-        text.style.bottom = "20px";
-        text.style.opacity = 0;
-        item.style.zIndex = "9999";
-        item.style.transitionDuration = ".7s";
-        item.style.transitionDelay = ".3s";
-        item.style.transform = "scale3d(14,19,14)";
-      });
-    });
+    
+    // const business_items = document.querySelectorAll(".business-item");
+    // const business_text = document.querySelectorAll(".business-item p:nth-child(1)");
+    // business_items.forEach((item, key)=>{
+    //   item.addEventListener("click", function(e){
+    //     let text = business_text[key];
+    //     business_items.forEach((item,key1)=>{
+    //       if(key1 != key){
+    //         item.style.transitionDuration = ".4s";
+    //         if(key1 == 0 || key1 ==2){
+    //           item.style.transform = "translateX(-200px)";
+    //         }else{
+    //           item.style.transform = "translateX(+200px)";
+    //         }
+    //         item.style.opacity = 0;
+    //       }
+    //     });
+    //     text.style.transition = "all .3s ease-out";
+    //     text.style.bottom = "20px";
+    //     text.style.opacity = 0;
+    //     item.style.zIndex = "9999";
+    //     item.style.transitionDuration = ".7s";
+    //     item.style.transitionDelay = ".3s";
+    //     item.style.transform = "scale3d(14,19,14)";
+    //   });
+    // });
+
 
 
       //轮播图
