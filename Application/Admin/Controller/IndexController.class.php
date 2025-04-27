@@ -47,6 +47,8 @@ class IndexController extends CommonController
         $top_news = M('article')->where('menu_id=19 and status=2 and top=1')->order('sort asc, article_time desc')->limit(0,3)->select();
         foreach ($top_news as $key => $val) {
             $top_news[$key]['date'] = substr($val['article_time'],0,10);
+
+            $top_news[$key]['news_img'] = M('file')->where('id=' . $top_news[$key]['file_id'])->getField('file_path');
         }
         $this->assign("top_news_list", $top_news);
         $this->display();

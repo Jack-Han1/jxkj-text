@@ -425,8 +425,9 @@ class AboutController extends CommonController
     }
 
     public function magazine(){
-        $list = M('magazine')->where(array('status' => 1))
-        ->order('sort asc')->select();
+        // $list = M('magazine')->where(array('status' => 1))
+        // ->order('sort asc')->select();
+        $list = M('magazine')->where(array('status' => 1))->order('date DESC')->select();
         $this->assign('list', $list);
         $this->display();
     }
@@ -461,14 +462,18 @@ class AboutController extends CommonController
         $save['title'] = $_POST['title'];
         $save['img'] = $_POST['img'];
         $save['url'] = $_POST['url'];
+        $save['date'] = $_POST['date'];
         $save['create_id'] = session('user.id');
         //$save['url'] = 'About/introduce';
         $save['update_time'] = date("Y-m-d H:i:s" ,time());
 //        $save['status'] = 1;
         $res = M('magazine')->where('id='.$_POST['id'])->save($save);
+         // 按 date 字段降序排序（从新到旧）
+        // $res = M('magazine')->where('id='.$_POST['id'])->order('date DESC')->save($save);
         if($res){
             $this->writeLog("用户修改内容:".$_POST['id']);
             $this->success("修改成功","index");
+            $this->redirect('magazine');
         }else{
             $this->errer("修改失败！");
         }
@@ -484,6 +489,7 @@ class AboutController extends CommonController
             $this->writeLog("用户删除月刊:".$_POST['id']);
             $data['status'] = 1;
             $data['info'] = "删除成功!";
+            // $this->redirect('magazine');
         }else{
             $data['status'] = 0;
             $data['info'] = "删除失败!";
@@ -520,7 +526,7 @@ class AboutController extends CommonController
             'create_id'=> session('user.id'),
         );
         $content->add($data);        
-        $this->redirect('index');
+        $this->redirect('magazine');
     }
 }
 

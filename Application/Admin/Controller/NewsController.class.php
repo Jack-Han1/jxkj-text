@@ -180,7 +180,14 @@ class NewsController extends CommonController
                 $list[$i]['create_time'] = $list[$i]['article_time'];
             $list[$i]['year'] = date('Y', strtotime($list[$i]['create_time']));
             $list[$i]['data'] = date('m-d', strtotime($list[$i]['create_time']));
+            if($list[$i]['file_id']){
+                $list[$i]['news_img'] = M('file')->where('id=' . $list[$i]['file_id'])->getField('file_path');
+            }else{
+                $list[$i]['news_img'] = '';
+            }
         }
+
+        
 
         $this->assign("page", $page);
         $this->assign('list', $list);

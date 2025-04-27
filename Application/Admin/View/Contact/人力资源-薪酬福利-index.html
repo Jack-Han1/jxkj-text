@@ -3,7 +3,7 @@
 <html lang="zh-cn">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.3, maximum-scale=1.0, user-scalable=no">
     <title>人力资源-薪酬福利</title>
     <link rel="stylesheet" href="__PUBLIC__/Css/new_base.css" />
     <link
@@ -15,9 +15,16 @@
         margin: 0;
       }
       .top-banner {
-        height: 288px;
+        height: 467px;
         width: 100%;
-        background-color: #d9d9d9;
+        /* background-color: #d9d9d9; */
+      }
+      .top-banner img {
+        display: block; /* 图片必须是块级元素 */
+        margin: 0 auto; /* 水平居中 */
+        height: 467px;
+        width: 100%;
+        object-fit: cover;
       }
       .top-nav {
         display: flex;
@@ -26,18 +33,27 @@
         box-shadow: 0px 4px 4px 0px rgba(214, 214, 214, 0.25);
       }
       .top-nav-item {
-        width: 165px;
-        height: 28px;
+        width: 240px;
+        height: 41px;
         /* border: 1px solid red; */
-        font-size: 11px;
+        font-size: 16px;
         font-family: "PingFang SC Regular";
         font-weight: 400;
-        line-height: 28px;
+        line-height: 41px;
         text-align: center;
       }
       .top-nav-item a {
         text-decoration: none;
         color: #000;
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+      }
+      .top-nav-item a:hover {
+        background-color: #f2f6fc;
+      }
+      .item-selected  a:hover{
+        background: #381c62;
       }
       .item-selected {
         background: #381c62;
@@ -69,7 +85,9 @@
     <include file="Admin@Common/new_header" />
     <div class="main">
       <!-- banner -->
-      <div class="top-banner"></div>
+      <div class="top-banner">
+        <img src="__PUBLIC__/images/new_view_2025/Frame_25@2x.png" alt="" />
+      </div>
       <!-- nav -->
       <div class="top-nav">
         <div class="top-nav-item">人才理念</div>

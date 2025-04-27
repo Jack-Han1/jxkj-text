@@ -1,39 +1,40 @@
-
-
 <style>
-  .search-container{
+  .search-container {
     display: inline-block;
     opacity: 0;
   }
   .search-icon {
-    position: relative;
-    width: 50px;
-    height: 50px;
+    position: absolute;
+    width: 72px;
+    height: 72px;
     /* border: 1px solid red; */
     /* margin: 0 auto; */
-    left: 60px;
+    right: 100px;
     bottom: 0px;
     background-image: url("__PUBLIC__/images/icons/search.svg");
-    background-repeat:no-repeat;
-    background-size:23px;
+    background-repeat: no-repeat;
+    background-size: 23px;
     background-position: center;
     display: inline-block;
     z-index: 999;
   }
+  .search-icon:hover {
+    cursor: pointer;
+  }
   .search-box {
     position: relative;
     width: 380px;
-    height: 50px;
+    height: 72px;
     /* border: 1px solid #d4d4d4; */
     /* margin: 0 auto; */
     left: 500px;
-    top: 6px;
+    top: 14px;
     display: inline-block;
     margin-right: 0px;
     /* box-shadow: 1px 1px 2px 1px gray; */
-    
+    /* border: 1px solid red; */
   }
-  .search-box input{
+  .search-box input {
     width: 100%;
     height: 40px;
     border: 1px solid #d4d4d4;
@@ -43,8 +44,8 @@
     font-size: 16px;
     padding-right: 50px;
     background-color: #fff;
-    box-shadow: 0px 0px 4px 1px gray;
-    
+    border-radius: 5px;
+    /* box-shadow: 0px 0px 4px 1px gray; */
   }
   .search-icon1 {
     position: relative;
@@ -55,11 +56,13 @@
     left: 328px;
     bottom: 40px;
     background-image: url("__PUBLIC__/images/icons/search_1.svg");
-    background-repeat:no-repeat;
-    background-size:28px;
+    background-repeat: no-repeat;
+    background-size: 28px;
     background-position: center;
     display: inline-block;
-    
+  }
+  .search-icon1:hover {
+    cursor: pointer;
   }
   .false-search-icon {
     position: relative;
@@ -67,146 +70,150 @@
     height: 28px;
     /* border: 1px solid red; */
     /* margin: 0 auto; */
-    left: 530px;
-    bottom: 40px;
+    left: 505px;
+    bottom: 32px;
     background-image: url("__PUBLIC__/images/icons/false.svg");
-    background-repeat:no-repeat;
-    background-size:28px;
+    background-repeat: no-repeat;
+    background-size: 20px;
     background-position: center;
 
     display: inline-block;
   }
-   /* new style */
+  .false-search-icon:hover {
+    cursor: pointer;
+  }
+  /* new style */
   .nav-ul {
-    transition: all .3s ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
   .slide-in-blurred-right {
     /* animation: stereotype-anime  .6s ease-in-out; */
-    -webkit-animation: slide-in-blurred-right 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
-    animation: slide-in-blurred-right 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+    -webkit-animation: slide-in-blurred-right 0.3s
+      cubic-bezier(0.23, 1, 0.32, 1) both;
+    animation: slide-in-blurred-right 0.3s cubic-bezier(0.23, 1, 0.32, 1) both;
   }
   .reverse-slide-in-blurred-right {
-    -webkit-animation: reverse-slide-in-blurred-right 0.6s cubic-bezier(0.320, 1.000, 0.230, 1.000) both;
-    animation: reverse-slide-in-blurred-right 0.6s cubic-bezier(0.320, 1.000, 0.230, 1.000) both;
+    -webkit-animation: reverse-slide-in-blurred-right 0.3s
+      cubic-bezier(0.32, 1, 0.23, 1) both;
+    animation: reverse-slide-in-blurred-right 0.3s
+      cubic-bezier(0.32, 1, 0.23, 1) both;
   }
   /* @keyframes stereotype-anime {
     0%{transform: scale(0,0);}
     100%{transform: scale(1,1);}
   } */
   @-webkit-keyframes slide-in-blurred-right {
-  0% {
-    -webkit-transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
-            transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
-    -webkit-transform-origin: 0% 50%;
-            transform-origin: 0% 50%;
-    -webkit-filter: blur(40px);
-            filter: blur(40px);
-    opacity: 0;
+    0% {
+      -webkit-transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
+      transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
+      -webkit-transform-origin: 0% 50%;
+      transform-origin: 0% 50%;
+      -webkit-filter: blur(40px);
+      filter: blur(40px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0) scaleY(1) scaleX(1);
+      transform: translateX(0) scaleY(1) scaleX(1);
+      -webkit-transform-origin: 50% 50%;
+      transform-origin: 50% 50%;
+      -webkit-filter: blur(0);
+      filter: blur(0);
+      opacity: 1;
+    }
   }
-  100% {
-    -webkit-transform: translateX(0) scaleY(1) scaleX(1);
-            transform: translateX(0) scaleY(1) scaleX(1);
-    -webkit-transform-origin: 50% 50%;
-            transform-origin: 50% 50%;
-    -webkit-filter: blur(0);
-            filter: blur(0);
-    opacity: 1;
+  @keyframes slide-in-blurred-right {
+    0% {
+      -webkit-transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
+      transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
+      -webkit-transform-origin: 0% 50%;
+      transform-origin: 0% 50%;
+      -webkit-filter: blur(40px);
+      filter: blur(40px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0) scaleY(1) scaleX(1);
+      transform: translateX(0) scaleY(1) scaleX(1);
+      -webkit-transform-origin: 50% 50%;
+      transform-origin: 50% 50%;
+      -webkit-filter: blur(0);
+      filter: blur(0);
+      opacity: 1;
+    }
   }
-}
-@keyframes slide-in-blurred-right {
-  0% {
-    -webkit-transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
-            transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
-    -webkit-transform-origin: 0% 50%;
-            transform-origin: 0% 50%;
-    -webkit-filter: blur(40px);
-            filter: blur(40px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateX(0) scaleY(1) scaleX(1);
-            transform: translateX(0) scaleY(1) scaleX(1);
-    -webkit-transform-origin: 50% 50%;
-            transform-origin: 50% 50%;
-    -webkit-filter: blur(0);
-            filter: blur(0);
-    opacity: 1;
-  }
-  }
-
-
-
 
   @-webkit-keyframes reverse-slide-in-blurred-right {
-  
-  0% {
-    -webkit-transform: translateX(0) scaleY(1) scaleX(1);
-            transform: translateX(0) scaleY(1) scaleX(1);
-    -webkit-transform-origin: 50% 50%;
-            transform-origin: 50% 50%;
-    -webkit-filter: blur(0);
-            filter: blur(0);
-    opacity: 1;
+    0% {
+      -webkit-transform: translateX(0) scaleY(1) scaleX(1);
+      transform: translateX(0) scaleY(1) scaleX(1);
+      -webkit-transform-origin: 50% 50%;
+      transform-origin: 50% 50%;
+      -webkit-filter: blur(0);
+      filter: blur(0);
+      opacity: 1;
+    }
+    99% {
+      -webkit-transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
+      transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
+      -webkit-transform-origin: 0% 50%;
+      transform-origin: 0% 50%;
+      -webkit-filter: blur(40px);
+      filter: blur(40px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+      -webkit-transform-origin: 50% 50%;
+      transform-origin: 50% 50%;
+      opacity: 0;
+    }
   }
-  99% {
-    -webkit-transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
-            transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
-    -webkit-transform-origin: 0% 50%;
-            transform-origin: 0% 50%;
-    -webkit-filter: blur(40px);
-            filter: blur(40px);
-    opacity: 0;
-  }
-  100%{
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-    -webkit-transform-origin: 50% 50%;
-            transform-origin: 50% 50%;
-    opacity: 0;
-  }
-}
-@keyframes reverse-slide-in-blurred-right {
-  0% {
-    -webkit-transform: translateX(0) scaleY(1) scaleX(1);
-            transform: translateX(0) scaleY(1) scaleX(1);
-    -webkit-transform-origin: 50% 50%;
-            transform-origin: 50% 50%;
-    -webkit-filter: blur(0);
-            filter: blur(0);
-    opacity: 1;
-  }
-  99% {
-    -webkit-transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
-            transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
-    -webkit-transform-origin: 0% 50%;
-            transform-origin: 0% 50%;
-    -webkit-filter: blur(40px);
-            filter: blur(40px);
-    opacity: 0;
-  }
-  100%{
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-    -webkit-transform-origin: 50% 50%;
-            transform-origin: 50% 50%;
-    opacity: 0;
-  }
+  @keyframes reverse-slide-in-blurred-right {
+    0% {
+      -webkit-transform: translateX(0) scaleY(1) scaleX(1);
+      transform: translateX(0) scaleY(1) scaleX(1);
+      -webkit-transform-origin: 50% 50%;
+      transform-origin: 50% 50%;
+      -webkit-filter: blur(0);
+      filter: blur(0);
+      opacity: 1;
+    }
+    99% {
+      -webkit-transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
+      transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
+      -webkit-transform-origin: 0% 50%;
+      transform-origin: 0% 50%;
+      -webkit-filter: blur(40px);
+      filter: blur(40px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+      -webkit-transform-origin: 50% 50%;
+      transform-origin: 50% 50%;
+      opacity: 0;
+    }
   }
 
   .new_header {
     width: 100%;
-    height: 54px;
+    height: 72px;
     background-color: #fff;
-    border-bottom: 1px solid #7c7c7c;
+    /* border-bottom: 1px solid #7c7c7c; */
     z-index: 999;
-    transition: all .2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
   }
   .new_header:hover {
-    transform: scale(1.02);
+    /* transform: scale(1.02); */
   }
   .main-1200 {
     width: 1200px;
-    height: 53px;
+    height: 72px;
     margin: 0 auto;
     /* border: 1px solid red; */
     position: relative;
@@ -223,10 +230,11 @@
     zoom: 1;
   } */
   .logo {
-    height: 36px;
+    height: 48px;
     position: absolute;
-    top: 9px;
-    left: 0;
+    top: 50%;
+    left: 100px;
+    transform: translateY(-50%);
     z-index: 999;
   }
   .nav-ul {
@@ -234,10 +242,10 @@
     left: 260px;
     /* border: 1px solid blue;  */
   }
-  .text-box:hover {
+  /* .text-box:hover {
     width: 15px;
     height: 15px;
-  }
+  } */
   .nav-item {
     /* border: 1px solid blue; */
     /* color: #333; */
@@ -245,14 +253,14 @@
     float: left;
     margin-right: 32px;
     /* margin-top: 17px; */
-    line-height: 54px;
+    line-height: 72px;
   }
   .nav-item .txt {
     display: block;
-    height: 54px;
+    height: 72px;
     text-decoration: none;
     font-family: "PingFang SC Regular";
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 500;
     color: rgba(51, 51, 51, 1);
     position: relative;
@@ -288,13 +296,12 @@
   }
 </style>
 
-
-
 <div class="new_header">
-  <div class="main-1200 clearfix">
-    <a href="__APP__/index.php/Admin/Index" target="_self" class="txt"
+  <a href="__APP__/index.php/Admin/Index" target="_self" class="txt"
       ><img class="logo" src="__PUBLIC__/images/logo.png" />
     </a>
+  <div class="main-1200 clearfix">
+    
     <ul class="nav-ul clearfix">
       <li class="nav-item">
         <a href="__APP__/index.php/Admin/Index" target="_self" class="txt"
@@ -319,27 +326,21 @@
           >
         </li>
       </volist>
-      <div class="search-icon">
-      </div>
+      
     </ul>
     <div class="search-container">
       <div class="search-box">
-        <input type="text" placeholder="输入搜索内容" id="search-input">
-        <div class="search-icon1">
-        </div>
+        <input type="text" placeholder="输入搜索内容" id="search-input" />
+        <div class="search-icon1"></div>
       </div>
-    <div class="false-search-icon">
+      <div class="false-search-icon"></div>
     </div>
   </div>
+  <div class="search-icon"></div>
 </div>
-</div>
-
-
-
-
 
 <script>
-  function initHeader(){
+  function initHeader() {
     const searchIcon = document.querySelector(".search-icon");
     const searchIcon1 = document.querySelector(".search-icon1");
     const searchContainer = document.querySelector(".search-container");
@@ -350,81 +351,78 @@
 
     // console.log(Winheight,Winheight)
 
-    function searchFunc(query){
-        // //搜素请求
-        // console.log(query);
-        // var httpRequest = new XMLHttpRequest();//第一步：创建需要的对象
-        // httpRequest.open('POST', 'Search/search', true); //第二步：打开连接
-        // httpRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");//设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
-        // httpRequest.send('query='+query);//发送请求 将情头体写在send中
-        // /**
-        //  * 获取数据后的处理程序
-        //  */
-        // httpRequest.onreadystatechange = function () {
-        //     //请求后的回调接口，可将请求成功后要执行的程序写在其中
-        //     if (httpRequest.readyState == 4 && httpRequest.status == 200) {
-        //       //验证请求是否发送成功
-        //       var json = httpRequest.responseText;
-        //       //获取到服务端返回的数据
-        //       // var obj = JSON.parse(json);
-        //       // console.log(obj);
-        //       window.location.href = "__APP__/index.php/Admin/Search/searchresult?query="+window.btoa(json);
-        //     }
-        // }
-        window.location.href = "__APP__/index.php/Admin/Search/searchresult?search_word="+query;
+    function searchFunc(query) {
+      // //搜素请求
+      // console.log(query);
+      // var httpRequest = new XMLHttpRequest();//第一步：创建需要的对象
+      // httpRequest.open('POST', 'Search/search', true); //第二步：打开连接
+      // httpRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");//设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
+      // httpRequest.send('query='+query);//发送请求 将情头体写在send中
+      // /**
+      //  * 获取数据后的处理程序
+      //  */
+      // httpRequest.onreadystatechange = function () {
+      //     //请求后的回调接口，可将请求成功后要执行的程序写在其中
+      //     if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+      //       //验证请求是否发送成功
+      //       var json = httpRequest.responseText;
+      //       //获取到服务端返回的数据
+      //       // var obj = JSON.parse(json);
+      //       // console.log(obj);
+      //       window.location.href = "__APP__/index.php/Admin/Search/searchresult?query="+window.btoa(json);
+      //     }
+      // }
+      window.location.href =
+        "__APP__/index.php/Admin/Search/searchresult?search_word=" + query;
     }
-    searchIcon.addEventListener("click",(e)=>{
-              
+    searchIcon.addEventListener("click", (e) => {
+      nav.style.transform = `scale(0)`;
+      viewNavFlag = false;
+      searchContainer.classList.remove("reverse-slide-in-blurred-right");
+      void searchContainer.scrollWidth;
+      searchContainer.classList.add("slide-in-blurred-right");
 
-              nav.style.transform = `scale(0)`;
-              viewNavFlag = false;
-              searchContainer.classList.remove("reverse-slide-in-blurred-right");
-              void searchContainer.scrollWidth;
-              searchContainer.classList.add("slide-in-blurred-right");
-              
-              searchIcon.style.transform = `scale(0)`;
-              //falseIcon.style.transform = `scale(1)`;
-            });
-    falseIcon.addEventListener("click",(e)=>{
-              
-              nav.style.transform = `scale(1)`;
-              nav.style.zIndex = 999;
-              viewNavFlag = true;
+      searchIcon.style.transform = `scale(0)`;
+      //falseIcon.style.transform = `scale(1)`;
+    });
+    falseIcon.addEventListener("click", (e) => {
+      nav.style.transform = `scale(1)`;
+      nav.style.zIndex = 999;
+      viewNavFlag = true;
 
-              searchContainer.classList.remove("slide-in-blurred-right");
-              void searchContainer.scrollWidth;
-              searchContainer.classList.add("reverse-slide-in-blurred-right");
+      searchContainer.classList.remove("slide-in-blurred-right");
+      void searchContainer.scrollWidth;
+      searchContainer.classList.add("reverse-slide-in-blurred-right");
 
-              searchIcon.style.transform = `scale(1)`;
-              
-              //falseIcon.style.transform = `scale(0)`;
-              
-            });
-    searchIcon1.addEventListener("click",(e)=>{
-              const query = document.querySelector(".search-box>input");
-              searchFunc(query.value);
-            });
-    window.addEventListener("keydown",(e)=>{
-      if(e.keyCode === 13){
-        var Input = document.getElementById('search-input');
+      searchIcon.style.transform = `scale(1)`;
+
+      //falseIcon.style.transform = `scale(0)`;
+    });
+    searchIcon1.addEventListener("click", (e) => {
+      const query = document.querySelector(".search-box>input");
+      searchFunc(query.value);
+    });
+    window.addEventListener("keydown", (e) => {
+      if (e.keyCode === 13) {
+        var Input = document.getElementById("search-input");
         if (Input == document.activeElement) {
-            searchFunc(Input.value);
+          searchFunc(Input.value);
         }
       }
-      }
-    );
+    });
+    // 顶部栏
     const header = document.querySelector(".new_header");
-    window.addEventListener("mousewheel",(e)=>{
-      var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
-      if (scrollTop >= 500){
+    window.addEventListener("mousewheel", (e) => {
+      var scrollTop =
+        document.body.scrollTop || document.documentElement.scrollTop;
+      if (scrollTop >= 100) {
         header.style.position = "fixed";
-      }else{
+      } else {
         header.style.position = "relative";
       }
     });
-}
-initHeader();  
-
+  }
+  initHeader();
 </script>
 <!-- 页面自适应 -->
-<script src="__PUBLIC__/Js/fit-screen.js"></script>
+<!-- <script src="__PUBLIC__/Js/fit-screen.js"></script> -->

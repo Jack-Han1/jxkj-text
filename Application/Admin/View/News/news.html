@@ -3,8 +3,11 @@
 <html lang="zh-cn">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>精信简介</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=0.3, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>新闻中心-企业新闻</title>
     <link rel="stylesheet" href="__PUBLIC__/Css/new_base.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
@@ -15,10 +18,40 @@
         background: rgba(245, 245, 245, 1);
       }
       .top-banner {
-        height: 288px;
+        height: 467px;
         width: 100%;
-        background-color: #d9d9d9;
+        /* background-color: #d9d9d9; */
+        background-image: url("__PUBLIC__/images/new_view_2025/news_group101@2x.png");
+        background-size: cover; /* 图片覆盖整个区域 */
+        background-position: center; /* 图片居中显示 */
+        position: relative;
       }
+      .top-banner-inside {
+        width: 1200px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 45%;
+      }
+      .top-banner-inside-p1 {
+        color: #ffffff;
+        font-family: "Microsoft YaHei";
+        font-weight: 700;
+        font-size: 53.6px;
+      }
+      .top-banner-inside-p2 {
+        color: #ffffff;
+        font-family: "Microsoft YaHei";
+        font-weight: 400;
+        font-size: 24.8px;
+      }
+      /* .top-banner img {
+        display: block;
+        margin: 0 auto;
+        height: 467px;
+        width: 100%;
+        object-fit: cover;
+      } */
       .top-nav {
         display: flex;
         justify-content: center;
@@ -26,18 +59,27 @@
         box-shadow: 0px 4px 4px 0px rgba(214, 214, 214, 0.25);
       }
       .top-nav-item {
-        width: 165px;
-        height: 28px;
+        width: 240px;
+        height: 41px;
         /* border: 1px solid red; */
-        font-size: 11px;
+        font-size: 16px;
         font-family: "PingFang SC Regular";
         font-weight: 400;
-        line-height: 28px;
+        line-height: 41px;
         text-align: center;
       }
       .top-nav-item a {
         text-decoration: none;
         color: #000;
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+      }
+      .top-nav-item a:hover {
+        background-color: #f2f6fc;
+      }
+      .item-selected a:hover {
+        background: #381c62;
       }
       .item-selected {
         background: #381c62;
@@ -50,59 +92,79 @@
         margin: 0 auto;
         /* border: 1px solid red; */
       }
+      .w-1200 {
+        width: 1200px;
+        margin: 0 auto;
+        box-sizing: border-box;
+        /* border: 1px solid red; */
+      }
       .news {
         padding-left: 0;
-        margin-top: 50px;
+        margin-top: 85px;
       }
       .news-item {
         position: relative;
-        height: 118px;
+        height: 147px;
         border-bottom: 1px solid #d5dee5;
         /* list-style: none; */
       }
-      .news-item-img {
-        width: 160px;
-        height: 84px;
+      .news-item:hover {
+        background-color: #f0f0f1;
+      }
+      .news-img-box {
+        width: 200px;
+        height: 105px;
         position: absolute;
         left: 0;
-        top: 17px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .news-img-box img {
+        width: 200px;
+        height: 105px;
+        object-fit: cover;
+        display: block;
+        margin: 0 auto;
       }
       .news-item-title {
-        height: 17px;
-        width: 782px;
-        color: #000;
-        font-family: "PingFang SC Regular";
-        font-size: 12px;
+        /* height: 17px;
+        width: 782px; */
+        color: #333333;
+        font-family: "PingFang SC";
         font-weight: 400;
+        font-size: 16px;
+        line-height: 22px;
         position: absolute;
-        left: 18px;
+        left: 23px;
         top: 22px;
-        margin-left: 160px;
+        margin-left: 200px;
       }
       .news-item-text {
-        height: 35px;
-        width: 782px;
-        color: #666;
-        font-family: "PingFang SC Regular";
-        font-size: 9px;
+        /* height: 35px; */
+        width: 977px;
+        color: #666666;
+        font-family: "Microsoft YaHei";
         font-weight: 400;
+        font-size: 14px;
+        line-height: 22px;
         position: absolute;
-        left: 18px;
+        left: 23px;
         top: 47px;
-        margin-left: 160px;
+        margin-left: 200px;
         overflow: hidden;
       }
       .news-item-date {
-        height: 13px;
-        width: 782px;
-        color: #666;
-        font-family: "PingFang SC Regular";
-        font-size: 9px;
+        /* height: 13px;
+        width: 782px; */
+        color: #666666;
+        font-family: "PingFang SC";
         font-weight: 400;
+        font-size: 11.2px;
+        line-height: 16px;
         position: absolute;
-        left: 18px;
-        bottom: 4px;
-        margin-left: 160px;
+        left: 23px;
+        bottom: 18px;
+        margin-left: 200px;
       }
       .page {
         /* border: 1px solid red; */
@@ -117,40 +179,40 @@
       .page .num,
       .page .next,
       .page .prev {
-        margin: 0 3px;
-        font-size: 9px;
-        line-height: 22px;
+        margin: 0 4px;
+        font-size: 12px;
+        line-height: 28px;
         text-decoration: none;
       }
       .page .current {
         float: left;
         display: block;
-        width: 22px;
-        height: 22px;
+        width: 28px;
+        height: 28px;
         background-color: rgb(56, 28, 98);
         color: white;
       }
       .page .num {
         float: left;
         display: block;
-        width: 22px;
-        height: 22px;
+        width: 28px;
+        height: 28px;
         background-color: #fff;
         color: rgb(102, 102, 102);
       }
       .page .next {
         float: left;
         display: block;
-        width: 46px;
-        height: 22px;
+        width: 58px;
+        height: 28px;
         background-color: #fff;
         color: rgb(102, 102, 102);
       }
       .page .prev {
         float: left;
         display: block;
-        width: 46px;
-        height: 22px;
+        width: 58px;
+        height: 28px;
         background-color: #fff;
         color: rgb(102, 102, 102);
       }
@@ -162,7 +224,13 @@
     <!-- main -->
     <div class="main">
       <!-- banner -->
-      <div class="top-banner"></div>
+      <div class="top-banner">
+        <!-- <img src="__PUBLIC__/images/new_view_2025/about_group101@2x.png" alt="" /> -->
+        <div class="top-banner-inside">
+          <p class="top-banner-inside-p1">新闻中心</p>
+          <p class="top-banner-inside-p2">了解精信发展历史和最新动态</p>
+        </div>
+      </div>
       <!-- nav -->
       <div class="top-nav">
         <div class="top-nav-item item-selected">
@@ -172,17 +240,21 @@
         </div>
       </div>
       <!-- content 960px -->
-      <div class="w-960 clearfix">
+      <div class="w-1200 clearfix">
         <ul class="news">
           <volist name="list" id="vo">
-            <li class="news-item">
-              <a href="__APP__/index.php/Admin/News/news_detail?id={$vo.id}">
-                <img data-src="http://test:8888//Uploads/2018-08-09/5b6bb02d307dc.png" alt="" class="news-item-img lazyload" />
+            <a href="__APP__/index.php/Admin/News/news_detail?id={$vo.id}">
+              <li class="news-item">
+                <!-- <div>__ROOT__{$vo.news_img}</div> -->
+                <div class="news-img-box">
+                    <img src="__ROOT__{$vo.news_img}" alt="" loading="lazy" />
+                </div>
+
                 <p class="news-item-title">{$vo.name}</p>
                 <p class="news-item-text">{$vo.abstract}</p>
                 <p class="news-item-date">{$vo.year}-{$vo.data}</p>
-              </a>
-            </li>
+              </li>
+            </a>
           </volist>
 
           <div class="page clearfix">
@@ -243,5 +315,4 @@
   </body>
 </html>
 
-<script src="__PUBLIC__/Js/my-lazyload.js"></script>
-
+<!-- <script src="__PUBLIC__/Js/my-lazyload.js"></script> -->

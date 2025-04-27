@@ -139,7 +139,8 @@ class AboutController extends CommonController
         $Page->setConfig('theme', '%UP_PAGE% %LINK_PAGE% %DOWN_PAGE%');
         $page  = $Page->show();
         $list = M('magazine')->where(array('status' => 1))->limit($Page->firstRow.','.$Page->listRows)
-        ->order('sort asc,update_time desc')->select();
+        ->order('sort asc,date DESC')->select();
+        // $list = M('magazine')->where(array('status' => 1))->order('date DESC')->select();
 
         $this->assign('page',$page);
         $this->assign('list', $list);

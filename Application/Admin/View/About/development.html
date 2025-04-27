@@ -4,7 +4,10 @@
 <html lang="zh-cn">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=0.3, maximum-scale=1.0, user-scalable=no"
+    />
     <title>走进精信-发展历程</title>
     <link rel="stylesheet" href="__PUBLIC__/Css/new_base.css" />
     <link
@@ -16,10 +19,40 @@
         margin: 0;
       }
       .top-banner {
-        height: 288px;
+        height: 467px;
         width: 100%;
-        background-color: #d9d9d9;
+        /* background-color: #d9d9d9; */
+        background-image: url("__PUBLIC__/images/new_view_2025/about_group101@2x.png");
+        background-size: cover; /* 图片覆盖整个区域 */
+        background-position: center; /* 图片居中显示 */
+        position: relative;
       }
+      .top-banner-inside {
+        width: 1200px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 45%;
+      }
+      .top-banner-inside-p1 {
+        color: #ffffff;
+        font-family: "Microsoft YaHei";
+        font-weight: 700;
+        font-size: 53.6px;
+      }
+      .top-banner-inside-p2 {
+        color: #ffffff;
+        font-family: "Microsoft YaHei";
+        font-weight: 400;
+        font-size: 24.8px;
+      }
+      /* .top-banner img {
+        display: block;
+        margin: 0 auto;
+        height: 467px;
+        width: 100%;
+        object-fit: cover;
+      } */
       .top-nav {
         display: flex;
         justify-content: center;
@@ -27,18 +60,27 @@
         box-shadow: 0px 4px 4px 0px rgba(214, 214, 214, 0.25);
       }
       .top-nav-item {
-        width: 165px;
-        height: 28px;
+        width: 240px;
+        height: 41px;
         /* border: 1px solid red; */
-        font-size: 11px;
+        font-size: 16px;
         font-family: "PingFang SC Regular";
         font-weight: 400;
-        line-height: 28px;
+        line-height: 41px;
         text-align: center;
       }
       .top-nav-item a {
         text-decoration: none;
         color: #000;
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+      }
+      .top-nav-item a:hover {
+        background-color: #f2f6fc;
+      }
+      .item-selected a:hover {
+        background: #381c62;
       }
       .item-selected {
         background: #381c62;
@@ -54,57 +96,100 @@
       .w-960 {
         width: 960px;
         margin: 0 auto;
-        /* border: 1px solid red; */
+      }
+      .w-1200 {
+        width: 1200px;      
+        position: relative;
+        margin: 0 auto;         
       }
       .past {
-        height: 368px;
-        /* border: 1px solid gray; */
+        display: flex;
+        justify-content: space-between;
+        background-color: white;
+        padding: 0px;
+        margin-top: 100px;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+      }
+      .year-left {
+        width: 20%;
+        border-right: 1px solid #ccc;
+        height: 100%;
         position: relative;
-        margin-top: 84px;
-        margin-bottom: 50px;
       }
-      .past-box {
-        width: 10000px;
-        /* border: 1px solid red; */
-        position: absolute;
-        left: 0px;
+      .year-nav-left {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
       }
-      .past-box-item {
-        width: 249px;
-        height: 368px;
-        float: left;
-        /* border: 1px solid blue; */
-        padding-right: 40px;
-        border-right: 1.5px solid #e6e6e6;
-        margin-right: 32px;
+      .year-list-left {
+        display: flex;
+        overflow-y: auto;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0;
+        margin: 0;
       }
-      .past-item-year {
-        color: #211c62;
-        font-family: "PingFang SC Regular";
-        font-size: 38px;
-        font-weight: 600;
-        margin-top: 17px;
-        margin-bottom: 30px;
+      .year-item-left {
+        padding: 10px;
+        font-size: 18px;
+        cursor: pointer;
+        margin: 5px 0;
+        transition: all 0.3s ease;
       }
-      .past-item-text {
-        color: #666;
-        font-family: "PingFang SC Light";
-        font-size: 12px;
-        font-weight: 400;
-        position: relative;
-        padding-left: 12px;
-        margin-bottom: 25px;
+      .year-item-left:hover {
+        color: #5e99f1;
       }
-      .past-item-text::before {
-        content: "";
-        width: 6px;
-        height: 6px;
-        background-color: #381c62;
-        border-radius: 50%;
-        position: absolute;
-        left: 0px;
-        top: 6px;
+      .year-item-left.active {
+        color: #3f77cc;
+        font-weight: bold;
       }
+      #year-title-right {        
+        opacity: 0; /* 初始透明 */
+      }
+      #year-events-right {       
+        opacity: 0; /* 初始透明 */
+      }
+      /* 当内容更新时，通过添加active类来显示 */
+      #year-title-right.active,
+      #year-events-right.active {
+        opacity: 1;
+      }
+      
+      .events-right {
+        width: 80%;
+        background-color: #079ad40c;
+      }
+      button {
+        width: 100%;
+        font-size: 20px;
+        padding: 10px 15px;
+        cursor: pointer;
+        border: none;       
+        background-color: white;
+      }     
+      h2 {
+        font-size: 30px;
+        margin: 20px;
+        margin-bottom: 45px;
+        font-weight: bold;
+      }
+      .event-item {
+        margin: 25px;
+      }
+      .event-month {
+        font-weight: bold;
+        font-size: 22px;
+        margin-bottom: 13px;
+      }
+      .event-text {
+        color: black;
+        font-size: 17px;
+      }
+
     </style>
   </head>
   <body>
@@ -112,7 +197,13 @@
     <include file="Admin@Common/new_header" />
     <div class="main">
       <!-- banner -->
-      <div class="top-banner"></div>
+      <div class="top-banner">
+        <!-- <img src="__PUBLIC__/images/new_view_2025/about_group101@2x.png" alt="" /> -->
+        <div class="top-banner-inside">
+          <p class="top-banner-inside-p1">走进精信</p>
+          <p class="top-banner-inside-p2">了解精信发展历史和最新动态</p>
+        </div>
+      </div>
       <!-- nav -->
       <div class="top-nav">
         <div class="top-nav-item">
@@ -132,10 +223,7 @@
           >
         </div>
         <div class="top-nav-item">
-          <a
-            href="__APP__/index.php/Admin/About/Honor"
-            target="_self"
-            class=""
+          <a href="__APP__/index.php/Admin/About/Honor" target="_self" class=""
             >荣誉资质</a
           >
         </div>
@@ -157,134 +245,113 @@
         </div>
       </div>
       <!-- content 960px -->
-      <div class="w-960 clearfix">
+      <div class="w-1200 clearfix">
         <div class="past">
-          <div class="past-box" id="dragElement">
-            <div class="past-box-item">
-              <p class="past-item-year">2022</p>
-              <p class="past-item-text">
-                公司荣登"2018湖北服务业企业100强"榜单
-              </p>
-              <p class="past-item-text">
-                湖北精英盛华信息科技股份有限公司研究开发中心被武汉市科技局认定为市级科技创新平台
-              </p>
+          <!-- 左侧年份区 -->
+          <div class="year-left">
+            <div class="year-nav-left">
+              <button id="next-year-left">↑</button>
+              <div class="year-list-left" id="year-list-left"></div> <!-- 动态生成的年份列表 -->
+              <button id="prev-year-left">↓</button>
             </div>
-            <div class="past-box-item">
-              <p class="past-item-year">2021</p>
-              <p class="past-item-text">
-                公司荣登"2018湖北服务业企业100强"榜单
-              </p>
-              <p class="past-item-text">
-                湖北精英盛华信息科技股份有限公司研究开发中心被武汉市科技局认定为市级科技创新平台
-              </p>
-            </div>
-            <div class="past-box-item">
-              <p class="past-item-year">2020</p>
-              <p class="past-item-text">
-                公司荣登"2018湖北服务业企业100强"榜单
-              </p>
-              <p class="past-item-text">
-                湖北精英盛华信息科技股份有限公司研究开发中心被武汉市科技局认定为市级科技创新平台
-              </p>
-            </div>
-            <div class="past-box-item">
-              <p class="past-item-year">2019</p>
-              <p class="past-item-text">
-                公司荣登"2018湖北服务业企业100强"榜单
-              </p>
-              <p class="past-item-text">
-                湖北精英盛华信息科技股份有限公司研究开发中心被武汉市科技局认定为市级科技创新平台
-              </p>
-            </div>
-            <div class="past-box-item">
-              <p class="past-item-year">2018</p>
-              <p class="past-item-text">
-                公司荣登"2018湖北服务业企业100强"榜单
-              </p>
-              <p class="past-item-text">
-                湖北精英盛华信息科技股份有限公司研究开发中心被武汉市科技局认定为市级科技创新平台
-              </p>
-            </div>
-            <div class="past-box-item">
-              <p class="past-item-year">2017</p>
-              <p class="past-item-text">
-                公司荣登"2018湖北服务业企业100强"榜单
-              </p>
-              <p class="past-item-text">
-                湖北精英盛华信息科技股份有限公司研究开发中心被武汉市科技局认定为市级科技创新平台
-              </p>
-            </div>
-            <div class="past-box-item" style="border-right: 0px solid #e6e6e6">
-              <p class="past-item-year">2016</p>
-              <p class="past-item-text">
-                公司荣登"2018湖北服务业企业100强"榜单
-              </p>
-              <p class="past-item-text">
-                湖北精英盛华信息科技股份有限公司研究开发中心被武汉市科技局认定为市级科技创新平台
-              </p>
-            </div>
+          </div>       
+          <!-- 右侧内容区 -->
+          <div class="events-right">
+            <h2 id="year-title-right"></h2>
+            <div id="year-events-right"></div> <!-- 动态显示年份对应的事件 -->
           </div>
-        </div>
-        <!-- bootstrap进度条 -->
-        <div
-          class="progress"
-          role="progressbar"
-          aria-label="Example 1px high"
-          aria-valuenow="25"
-          aria-valuemin="0"
-          aria-valuemax="100"
-          style="height: 1px"
-        >
-          <div class="progress-bar" id="my-progress" style="width: 5%"></div>
         </div>
       </div>
     </div>
     <!-- footer组件 -->
     <include file="Admin@Common/new_footer" />
     <script>
-      // 横向拖拽
-      var dragging = false; // 记录鼠标是否正在被按住
-      var offsetX = 0; // 记录鼠标相对于元素左边界的位置
-      var offsetY = 0; // 记录鼠标相对于元素上边界的位置
+      const develop_event = [
+  { year: "2023", event: [{ month: "5月", text: "公司荣获华为中国合作伙伴大会商业市场携手共进突破奖" }, { month: "12月", text: "公司累计荣获150余项软件著作权" }] },
+  { year: "2022", event: [{ month: "2月", text: "公司荣获湖北省就业创业先进集体" }, { month: "4月", text: "公司被认定为专精特新“小巨人”企业" }] },
+  { year: "2020", event: [{ month: "6月", text: "公司被评为初心号角“新冠肺炎疫情防控“突出贡献单位" }, { month: "9月", text: "公司被评为武汉市守合同重信用企业" }] },
+  { year: "2019", event: [{ month: "4月", text: "公司荣获2018年度硚口区民营企业创新奖" }, { month: "11月", text: "公司被认定为科技“小巨人”企业" }] },
+  { year: "2018", event: [{ month: "7月", text: "公司荣登“2018湖北服务业企业100强”榜单" }, { month: "11月", text: "公司并购武汉博茗低碳产业股份有限公司" }] },
+  { year: "2017", event: [{ month: "2月", text: "公司研究开发中心被武汉市科技局认定为市级科技创新平台" }, { month: "12月", text: "公司成功在新三板挂牌" }] },
+  { year: "2016", event: [{ month: "6月", text: "公司完成股份制改革，变更为湖北精英盛华信息科技股份有限公司" }] },
+  { year: "2015", event: [{ month: "12月", text: "公司并购上海洲信信息技术有限公司" }] },
+  { year: "2013", event: [{ month: "12月", text: "公司荣获高新技术企业资质证书\n\n公司荣获20余个软件著作权" }] },
+  { year: "2007", event: [{ month: "6月", text: "公司注册成立" }] },
+  { year: "2006", event: [{ month: "10月", text: "公司开始进行市场拓展" }] },
+  { year: "2005", event: [{ month: "5月", text: "公司进行第一次资本注入" }] },
+  { year: "2004", event: [{ month: "3月", text: "公司与第一家合作伙伴达成协议" }] },
+  { year: "2003", event: [{ month: "7月", text: "公司成立初期团队组建" }] },
+];
 
-      document
-        .getElementById("dragElement")
-        .addEventListener("mousedown", function (event) {
-          event.preventDefault(); // 取消默认行为（如选中文本）
+const yearList = document.getElementById('year-list-left');
+const yearTitle = document.getElementById('year-title-right');
+const yearevents = document.getElementById('year-events-right');
+let currentYearIndex = 0;
 
-          dragging = true;
-          offsetX = event.clientX - this.offsetLeft;
-          offsetY = event.clientY - this.offsetTop;
-        });
+// 动态生成年份列表
+develop_event.forEach((item, index) => {
+  const yearItem = document.createElement('div');
+  yearItem.className = 'year-item-left';
+  yearItem.textContent = item.year;
+  yearItem.addEventListener('click', () => updateYearContent(index));
+  yearList.appendChild(yearItem);
+});
 
-      document.addEventListener("mouseup", function () {
-        dragging = false;
-      });
+// 更新右侧内容
+function updateYearContent(index) {
+  const selectedYear = develop_event[index];
 
-      document.addEventListener("mousemove", function (event) {
-        if (dragging === true) {
-          var xPos = event.clientX - offsetX;
-          var yPos = event.clientY - offsetY;
-          // console.log(xPos);
+  // 先清除所有年份的选中状态
+  document.querySelectorAll('.year-item-left').forEach(item => item.classList.remove('active'));
+  
+  // 设置当前年份为选中状态
+  document.querySelectorAll('.year-item-left')[index].classList.add('active');
 
-          if (xPos > 0) {
-            document.getElementById("dragElement").style.left = 0 + "px";
-            document.getElementById("my-progress").style.width = 5 + "%";
-          } else if (xPos < -1700) {
-            document.getElementById("dragElement").style.left = -1700 + "px";
-            document.getElementById("my-progress").style.width = 100 + "%";
-          } else {
-            document.getElementById("dragElement").style.left = xPos + "px";
-            // console.log(-(xPos / 2000) * 100);
-            document.getElementById("my-progress").style.width =
-              Math.ceil(-(xPos / 2000) * 100) + "%";
+  // 设置年份标题
+  yearTitle.textContent = selectedYear.year;
+  
+  // 清空当前内容
+  yearevents.innerHTML = '';
 
-            // document.getElementById("dragElement").style.top = yPos + "px";
-          }
-        }
-      });
-      
-      
-    </script> 
+  selectedYear.event.forEach(event => {
+    const eventItem = document.createElement('div');
+    eventItem.className = 'event-item';
+    const eventMonth = document.createElement('div');
+    eventMonth.className = 'event-month';
+    eventMonth.textContent = event.month;
+    const eventText = document.createElement('div');
+    eventText.className = 'event-text';
+    eventText.textContent = event.text;
+
+    eventItem.appendChild(eventMonth);
+    eventItem.appendChild(eventText);
+    yearevents.appendChild(eventItem);
+    currentYearIndex = index;
+  });
+}
+
+// 设置年份标题和事件内容的渐变效果
+yearTitle.classList.add('active');
+yearevents.classList.add('active');
+
+// 初始化显示第一个年份内容
+updateYearContent(currentYearIndex);
+
+// 左右箭头点击事件
+document.getElementById('next-year-left').addEventListener('click', () => {
+  if (currentYearIndex > 0) {
+    currentYearIndex--;
+    updateYearContent(currentYearIndex);
+  }
+});
+
+document.getElementById('prev-year-left').addEventListener('click', () => {
+  if (currentYearIndex < develop_event.length - 1) {
+    currentYearIndex++;
+    updateYearContent(currentYearIndex);
+  }
+});
+
+    </script>
   </body>
 </html>

@@ -103,6 +103,7 @@ class SearchController extends CommonController
 
 		$query = '%'.$_GET['search_word'].'%';
         $map1['name|abstract'] = array('like', $query);
+        $map1['menu_id'] = array('in', '19,20,21,22');
         $map1['status'] = 2;
 
         $article_cnt =  M('article')->where($map1)->count();
@@ -114,12 +115,20 @@ class SearchController extends CommonController
             $Product['article'][$key]['title'] = $val['name'];
             $Product['article'][$key]['abstract'] = $val['abstract'];
 			$Product['article'][$key]['date'] = substr($val['article_time'],0,10);
+            if(empty($val['file_id'])){
+                $Product['article'][$key]['news_img'] = '';
+                continue;
+            }
+            $file_path = M('file')->where('id=' . $val['file_id'])->getField('file_path');
+            $Product['article'][$key]['news_img'] = empty($file_path) ? '' : $file_path;
         }
 
         $map2['title|text'] = array('like', $query);
         $map2['status'] = 1;
         $magazine_cnt =  M('magazine')->where($map2)->count();
-        $res = M('magazine')->where($map2)->select();
+        // $res = M('magazine')->where($map2)->select();
+        // 获取符合条件的杂志列表，并按 date 字段排序
+        $res = M('magazine')->where($map2)->order('date DESC')->select();
 
         $Product['magazine_cnt'] = $magazine_cnt;
         foreach ($res as $key => $val) {

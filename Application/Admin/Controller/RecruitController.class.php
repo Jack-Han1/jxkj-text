@@ -77,7 +77,11 @@ class RecruitController extends CommonController
         $url = $_GET['url'];
         $pid = I("get.id");
         $list = M('staff')->where(array('status' => 1, 'pid' => $pid))->order('sort asc')->select();
+        $title = M('pic_dir')->where(array('id' => $pid))->getField('title');
+        $create_time = M('pic_dir')->where(array('id' => $pid))->getField('create_time');
+        $this->assign('create_time', $create_time);
         $this->assign('list', $list);
+        $this->assign('title', $title);
         $this->display();
     }
 

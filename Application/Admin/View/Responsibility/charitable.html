@@ -3,8 +3,11 @@
 <html lang="zh-cn">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>社会责任</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=0.3, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>精信科技-社会责任</title>
     <link rel="stylesheet" href="__PUBLIC__/Css/new_base.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
@@ -15,9 +18,38 @@
         margin: 0;
       }
       .top-banner {
-        height: 288px;
+        height: 384px;
         width: 100%;
-        background-color: #d9d9d9;
+        position: relative;
+      }
+      .banner-text {
+        width: 1200px;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        /* text-align: center; */
+      }
+      .banner-text-title {
+        color: rgba(39, 116, 145, 1);
+        font-family: "Microsoft YaHei";
+        font-weight: 700;
+        font-size: 64px;
+        line-height: 84px;
+      }
+      .banner-text-bottom {
+        color: rgba(39, 116, 145, 1);
+        font-family: "Microsoft YaHei";
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 42px;
+      }
+      .top-banner img {
+        display: block; /* 图片必须是块级元素 */
+        margin: 0 auto; /* 水平居中 */
+        height: 384px;
+        width: 100%;
+        /* object-fit: cover; */
       }
       .main {
         background-color: #f5f5f5;
@@ -28,105 +60,128 @@
         margin: 0 auto;
         /* border: 1px solid red; */
       }
+      .w-1200 {
+        width: 1200px;
+        margin: 0 auto;
+        box-sizing: border-box;
+        /* border: 1px solid red; */
+      }
+      .duty-develop img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center; /* 图片居中显示 */
+      }
       .duty-name {
-        color: #333;
-        font-family: "PingFang SC Regular";
-        font-size: 24px;
+        color: rgba(51, 51, 51, 1);
+        font-family: "Microsoft YaHei";
         font-weight: 700;
-        margin: 70px 0 40px;
-      }
-      .read-more {
-        color: #999;
-        font-family: "PingFang SC Regular";
-        font-size: 9px;
-        font-weight: 400;
-        float: right;
-        height: 36px;
-        line-height: 36px;
-      }
-      .duty-content {
-        display: flex;
-        justify-content: space-between;
-      }
-      .duty-item {
-        width: 465px;
-        height: 280px;
-        background-color: #fff;
-        padding: 48px;
-      }
-      .duty-item-pic {
-        width: 34px;
-        height: 34px;
-        background-color: #d9d9d9;
-      }
-      .duty-item-title {
-        color: #333;
-        font-family: "PingFang SC Regular";
-        font-size: 20px;
-        font-weight: 700;
-        letter-spacing: 1.2px;
-        margin-top: 12px;
+        font-size: 36px;
+        height: 54px;
         position: relative;
       }
-      .duty-item-title::after {
-        content: "";
-        width: 100%;
-        height: 1px;
-        background-color: #dcdcdc;
-        position: absolute;
-        bottom: -7px;
-        left: 0;
-      }
-      .duty-item-text {
-        color: #333;
+      .read-more {
+        color: rgb(56, 28, 98);
         font-family: "PingFang SC Regular";
-        font-size: 10px;
+        font-size: 20px;
         font-weight: 400;
-        line-height: 18px; /* 180% */
-        margin-top: 16px;
+        float: right;
+        height: 54px;
+        line-height: 54px;
+        margin-right: 30px;
+      }
+      .read-more::before {
+        content: "";
+        position: absolute;
+        right: 0px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 22px; /* 图标宽度 */
+        height: 22px; /* 图标高度 */
+        background-image: url("__PUBLIC__/images/new_view_2025/index_youjiantou.png"); /* 图标路径 */
+        background-size: cover; /* 确保图标完整显示 */
+      }
+      .read-more:hover {
+        color: #5017a7;
       }
       .public {
         display: flex;
-        justify-content: flex-start;
+        justify-content: space-between;
+        gap: 45px; /* 设置子元素之间的间隔 */
       }
       .public-item {
-        width: 244px;
-        height: 260px;
+        flex: 1;
+        height: 366px;
         border-bottom: 1px solid #d5dee5;
-        margin-right: 30px;
+        padding: 10px;
+        position: relative;
+        /* box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.08); */
+        transition: all 0.2s cubic-bezier(0, 0, 0.5, 1);
+        /* border: 1px solid red; */
+      }
+      .public-item:hover {
+        box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.16);
+        transform: scale3d(1.01, 1.01, 1.01);
       }
       .public-item-pic {
-        width: 244px;
-        height: 142px;
-        background-color: #d9d9d9;
+        width: 100%;
+        height: 216px;
+        /* background-color: #d9d9d9; */
+      }
+      .public-item-pic img {
+        width: 100%;
+        height: 216px;
+        object-fit: cover;
+        object-position: center; /* 图片居中显示 */
       }
       .public-item-text {
-        color: #333;
-        text-align: justify;
-        font-family: "PingFang SC Regular";
-        font-size: 11px;
+        /* height: 55px; */
+        color: #333333;
+        font-family: "Microsoft YaHei";
         font-weight: 400;
-        margin-top: 12px;
+        font-size: 20px;
+        line-height: 32px;
+        margin-top: 18px;
+        display: -webkit-box; /* 使用弹性盒子布局 */
+        -webkit-box-orient: vertical; /* 设置内容垂直排列 */
+        -webkit-line-clamp: 2; /* 限制显示的行数 */
+        overflow: hidden; /* 隐藏超出部分 */
+        text-overflow: ellipsis; /* 超出部分显示省略号 */
       }
       .public-item-date {
-        color: #666;
-        font-family: "PingFang SC Regular";
-        font-size: 9px;
+        color: #666666;
+        font-family: "Microsoft YaHei";
         font-weight: 400;
-        margin-top: 24px;
+        font-size: 14px;
+        position: absolute;
+        left: 10px;
+        bottom: 28px;
+        /* margin-top: 29px; */
       }
       .care {
         display: flex;
-        justify-content: flex-start;
+        justify-content: space-between;
+        gap: 45px; /* 设置子元素之间的间隔 */
+        position: relative;
       }
       .care-item {
-        width: 272px;
-        height: 170px;
-        background-color: #d9d9d9;
-        margin-right: 30px;
+        width: 100%;
+        height: 216px;
+        box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.08);
+        transition: all 0.2s cubic-bezier(0, 0, 0.5, 1);
+        /* background-color: #d9d9d9; */
         /* border: 1px solid red; */
       }
-      
+      .care-item:hover {
+        box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.16);
+        transform: scale3d(1.1, 1.1, 1.1);
+      }
+      .care-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center; /* 图片居中显示 */
+      }
     </style>
   </head>
   <body>
@@ -134,89 +189,66 @@
     <include file="Admin@Common/new_header" />
     <div class="main">
       <!-- banner -->
-      <div class="top-banner"></div>
+      <div class="top-banner">
+        <div class="banner-text">
+          <p class="banner-text-title">责广德远</p>
+          <p class="banner-text-bottom">
+            我们致力于在每一次行动中都展现出对社会的广泛关怀与深远责任
+          </p>
+        </div>
+        <img
+          src="__PUBLIC__/images/new_view_2025/society_group101@2x.png"
+          alt=""
+        />
+      </div>
       <!-- content 960px -->
-      <div class="w-960 clearfix">
+      <div class="w-1200 clearfix">
         <div class="duty">
-          <p class="duty-name">可持续发展方针</p>
-          <div class="duty-content">
-            <div class="duty-item">
-              <div class="duty-item-pic"></div>
-              <p class="duty-item-title">和谐共赢</p>
-              <p class="duty-item-text">
-                “为人类的“为人类新能源事业做出卓越贡献，为员工谋求精神与物质福祉,
-                提供奋斗平台”是精信科技的企业愿景；精信科技持续落实保障企业及供应链中的劳工权益、人权、职业健康与安全等领域，积极履行社会责任。“为人类的“为人类新能源事业做出卓越贡献，为员工谋求精神与物质福祉,
-                提供奋斗平台”是精信科技的企业愿景；精信科技持续落实保障企业及供应链中的劳工权益、人权、职业健康与安全等领域，积极履行社会责任。
-              </p>
-            </div>
-            <div class="duty-item">
-              <div class="duty-item-pic"></div>
-              <p class="duty-item-title">成就创新</p>
-              <p class="duty-item-text">
-                “为人类的“为人类新能源事业做出卓越贡献，为员工谋求精神与物质福祉,
-                提供奋斗平台”是精信科技的企业愿景；精信科技持续落实保障企业及供应链中的劳工权益、人权、职业健康与安全等领域，积极履行社会责任。“为人类的“为人类新能源事业做出卓越贡献，为员工谋求精神与物质福祉,
-                提供奋斗平台”是精信科技的企业愿景；精信科技持续落实保障企业及供应链中的劳工权益、人权、职业健康与安全等领域，积极履行社会责任。
-              </p>
-            </div>
+          <!-- 可持续发展方针 -->
+          <p class="duty-name" style="margin-top: 120px">可持续发展方针</p>
+          <div class="duty-develop" style="margin-top: 55px">
+            <img
+              src="__PUBLIC__/images/new_view_2025/society_group102@2x.png"
+              alt=""
+            />
           </div>
-          <div class="duty-content" style="margin-top: 30px">
-            <div class="duty-item">
-              <div class="duty-item-pic"></div>
-              <p class="duty-item-title">守正经营</p>
-              <p class="duty-item-text">
-                “为人类的“为人类新能源事业做出卓越贡献，为员工谋求精神与物质福祉,
-                提供奋斗平台”是精信科技的企业愿景；精信科技持续落实保障企业及供应链中的劳工权益、人权、职业健康与安全等领域，积极履行社会责任。“为人类的“为人类新能源事业做出卓越贡献，为员工谋求精神与物质福祉,
-                提供奋斗平台”是精信科技的企业愿景；精信科技持续落实保障企业及供应链中的劳工权益、人权、职业健康与安全等领域，积极履行社会责任。
-              </p>
-            </div>
-            <div class="duty-item">
-              <div class="duty-item-pic"></div>
-              <p class="duty-item-title">绿色循环</p>
-              <p class="duty-item-text">
-                “为人类的“为人类新能源事业做出卓越贡献，为员工谋求精神与物质福祉,
-                提供奋斗平台”是精信科技的企业愿景；精信科技持续落实保障企业及供应链中的劳工权益、人权、职业健康与安全等领域，积极履行社会责任。“为人类的“为人类新能源事业做出卓越贡献，为员工谋求精神与物质福祉,
-                提供奋斗平台”是精信科技的企业愿景；精信科技持续落实保障企业及供应链中的劳工权益、人权、职业健康与安全等领域，积极履行社会责任。
-              </p>
-            </div>
-          </div>
-          <p class="duty-name">
-            公益慈善<span class="read-more">查看更多>>></span>
+          <!-- 公益慈善 -->
+          <p class="duty-name" style="margin-top: 98px; margin-bottom: 60px">
+            公益慈善<a href="__APP__/index.php/Admin/Responsibility/warmheart"
+              ><span class="read-more">查看更多</span></a
+            >
           </p>
           <div class="public">
-            <div class="public-item">
-              <div class="public-item-pic"></div>
-              <p class="public-item-text">
-                精信科技总裁李文帅出席武汉市高新技术产业会，荆门市鲁商联合会一届一次会员大会在荆门星...
-              </p>
-              <p class="public-item-date">2023-06-25</p>
-            </div>
-            <div class="public-item">
-              <div class="public-item-pic"></div>
-              <p class="public-item-text">
-                精信科技总裁李文帅出席武汉市高新技术产业会，荆门市鲁商联合会一届一次会员大会在荆门星...
-              </p>
-              <p class="public-item-date">2023-06-25</p>
-            </div>
-            <div class="public-item">
-              <div class="public-item-pic"></div>
-              <p class="public-item-text">
-                精信科技总裁李文帅出席武汉市高新技术产业会，荆门市鲁商联合会一届一次会员大会在荆门星...
-              </p>
-              <p class="public-item-date">2023-06-25</p>
-            </div>
-            <div class="public-item">
-              <div class="public-item-pic"></div>
-              <p class="public-item-text">
-                精信科技总裁李文帅出席武汉市高新技术产业会，荆门市鲁商联合会一届一次会员大会在荆门星...
-              </p>
-              <p class="public-item-date">2023-06-25</p>
-            </div>
+            <volist name="top_warm_list" id="vo">
+              <div class="public-item">
+                <a
+                  href="__APP__/index.php/Admin/Responsibility/warmheart_detail?id={$vo.id}"
+                >
+                  <div class="public-item-pic">
+                    <img src="__ROOT__{$vo.news_img}" alt="" />
+                  </div>
+                  <p class="public-item-text">{$vo.name}</p>
+                  <p class="public-item-date">{$vo.year}-{$vo.data}</p>
+                </a>
+              </div>
+            </volist>
           </div>
-          <p class="duty-name">员工关怀</p>
+          <!-- 员工关怀 -->
+          <p class="duty-name" style="margin-top: 50px; margin-bottom: 50px">
+            员工关怀<a href="__APP__/index.php/Admin/Responsibility/staffcare"
+              ><span class="read-more">查看更多</span></a
+            >
+          </p>
           <div class="care">
-            <div class="care-item"></div>
-            <div class="care-item"></div>
-            <div class="care-item"></div>
+            <volist name="top_care_list" id="vo">
+              <div class="care-item">
+                <a
+                  href="__APP__/index.php/Admin/Responsibility/staffcare_detail?id={$vo.id}"
+                >
+                  <img src="__ROOT__{$vo.news_img}" alt="" />
+                </a>
+              </div>
+            </volist>
           </div>
         </div>
       </div>
