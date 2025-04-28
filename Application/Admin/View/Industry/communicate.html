@@ -368,17 +368,17 @@
               </div>
               <div class="content-bottom">
                 <div class="item">
-                  <p class="p-top" id="num1">100</p>
+                  <p class="p-top" id="num1">50</p>
                   <p class="p-medium">+</p>
                   <p class="p-bottom">合作政企</p>
                 </div>
                 <div class="item">
-                  <p class="p-top" id="num2">30</p>
+                  <p class="p-top" id="num2">0</p>
                   <p class="p-medium">+</p>
                   <p class="p-bottom">营业网点</p>
                 </div>
                 <div class="item">
-                  <p class="p-top" id="num3">20</p>
+                  <p class="p-top" id="num3">0</p>
                   <p class="p-medium">+</p>
                   <p class="p-bottom">营业网点</p>
                 </div>
@@ -421,9 +421,10 @@
     <!-- footer组件 -->
     <include file="Admin@Common/new_footer" />
     <script>
-      function animateNumber(id, target, duration, startNumber) {
+      function animateNumber(id, duration, finalNumber) {
         const element = document.getElementById(id);
-        let start = startNumber;
+        const target = finalNumber;
+        let start = parseInt(element.innerText);
         const increment = (target - start) / (duration / 16); // 假设每16ms更新一次，大约是60fps
         function update() {
           start += increment;
@@ -437,10 +438,27 @@
         update();
       }
 
+      // 监听元素是否出现在视口中
+      function observeAndAnimate(id, duration, finalNumber) {
+        const element = document.getElementById(id);
+        let hasAnimated = false; // 防止多次触发        
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && !hasAnimated) {
+              animateNumber(id, duration, finalNumber);
+              hasAnimated = true;
+              observer.unobserve(element); // 动画完成后不再监听
+            }
+          });
+        }, { threshold: 0.5 }); // 元素一半以上进入屏幕就触发
+        
+        observer.observe(element);
+      }
+
       window.onload = function() {
-        animateNumber('num1', 100, 1500 , 50); // 目标是100，用1500毫秒完成，起始值是50
-        animateNumber('num2', 30, 1500, 0);
-        animateNumber('num3', 20, 1500, 0);
+       observeAndAnimate('num1', 1500 , 100); // 用1500毫秒完成，最终值是100
+       observeAndAnimate('num2', 1500, 20);
+       observeAndAnimate('num3', 1500, 30);  
       };
     </script>
   </body>
