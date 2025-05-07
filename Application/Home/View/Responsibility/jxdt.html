@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <load href="__PUBLIC__/Css/home_base.css"/>
     <load href="__PUBLIC__/Js/jquery-1.6.min.js"/>
-<title>精信官网后台-员工关怀</title>
+<title>精信官网后台-精信大讲堂</title>
 </head>
 
 <body>
@@ -15,7 +15,7 @@
 <div class="con">
 	<div class="widget">
     	<div class="widget-header">
-        	<div class="title">员工关怀列表</div>
+        	<div class="title">精信大讲堂列表</div>
         </div>
         <div class="widget-body">
         	<table class="table">
@@ -57,7 +57,7 @@
                             </td>
                             <td >
                                 <span style="width: 205px;display: inline-block;text-align: left;">
-                                <a href="__APP__/index.php/Admin/Responsibility/staffcare_detail?id={$vo.id}" target="_blank">查看</a>
+                                <a href="__APP__/index.php/Admin/Responsibility/jxdt_detail?id={$vo.id}" target="_blank">查看</a>
                                 <a href="__APP__/index.php/Home/Responsibility/edit?id={$vo.id}">编辑</a>
                                 <a style="cursor: pointer;" onclick="del({$vo.id})">删除</a>
                                     <if condition="$vo.is_top eq 1">

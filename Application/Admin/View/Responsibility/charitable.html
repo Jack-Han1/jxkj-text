@@ -250,6 +250,27 @@
               </div>
             </volist>
           </div>
+          <!-- 精信大讲堂 -->
+          <p class="duty-name" style="margin-top: 98px; margin-bottom: 60px">
+            精信大讲堂<a href="__APP__/index.php/Admin/Responsibility/jxdt"
+              ><span class="read-more">查看更多</span></a
+            >
+          </p>
+          <div class="public">
+            <volist name="top_jxdt_list" id="vo">
+              <div class="public-item">
+                <a
+                  href="__APP__/index.php/Admin/Responsibility/jxdt_detail?id={$vo.id}"
+                >
+                  <div class="public-item-pic">
+                    <img src="__ROOT__{$vo.news_img}" alt="" />
+                  </div>
+                  <p class="public-item-text">{$vo.name}</p>
+                  <p class="public-item-date">{$vo.year}-{$vo.data}</p>
+                </a>
+              </div>
+            </volist>
+          </div>
         </div>
       </div>
     </div>
