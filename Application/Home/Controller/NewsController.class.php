@@ -98,7 +98,7 @@ class NewsController extends CommonController
             $this->writeLog("用户添加新闻:".$res);
             $this->success("添加成功","index");
         }else{
-            $this->errer("添加失败！");
+            $this->error("添加失败！");
         }
     }
 
