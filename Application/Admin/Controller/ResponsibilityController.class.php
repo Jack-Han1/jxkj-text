@@ -37,7 +37,7 @@ class ResponsibilityController extends CommonController
                 }
         }
 
-        $top_jxdt = M('article')->where('menu_id=89 and status=2 and top=1')->order('sort asc, article_time desc')->limit(0,3)->select();
+        $top_jxdt = M('article')->where('menu_id=89 and status=2 and top=1')->order('sort asc, article_time desc')->select();
         foreach ($top_jxdt as $key => $val) {
             $top_jxdt[$key]['date'] = substr($val['article_time'],0,10);
 
