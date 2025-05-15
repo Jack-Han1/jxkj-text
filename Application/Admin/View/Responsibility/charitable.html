@@ -122,6 +122,7 @@
       .read-more:hover {
         color: #5017a7;
       }
+
       .read-more-text {
         color: white;
         font-family: "PingFang SC Regular";
@@ -256,8 +257,7 @@
         display: inline-block; 
         position: absolute;
         left: -120px;
-        top: 120px;
-        
+        top: 120px;  
       }
       .arrow-right {
         display: inline-block; 
@@ -305,7 +305,6 @@
         margin-top: 18px;
         display: -webkit-box; /* 使用弹性盒子布局 */
         -webkit-box-orient: vertical; /* 设置内容垂直排列 */
-        -webkit-line-clamp: 2; /* 限制显示的行数 */
         overflow: hidden; /* 隐藏超出部分 */
         text-overflow: ellipsis; /* 超出部分显示省略号 */
       }
@@ -472,14 +471,14 @@
       
         let currentIndex = visibleCount;
         const totalCount = slider.children.length;
-      
+        
         // 初始偏移位置
         slider.style.transform = `translateX(-${currentIndex * step}px)`;
       
-        let isAnimating = false;
-      
+        let isAnimating = false; /*动画节流锁，防止用户疯狂点击导致动画冲突*/
+    
         function updateSlider() {
-          isAnimating = true;
+          isAnimating = true; /*开启动画节流锁*/
           slider.style.transition = "transform 0.5s ease";
           slider.style.transform = `translateX(-${currentIndex * step}px)`;
       
