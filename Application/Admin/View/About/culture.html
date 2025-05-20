@@ -101,12 +101,11 @@
         width: 100%;
         max-width: 800px;
         margin: 0 auto;
-        margin-top: 70px;
-        border-top: 1px solid #ddd;
+        margin-top: 100px;     
         font-family: "Microsoft YaHei", sans-serif;
       }
-      .accordion-item {
-        border-bottom: 1px solid #ddd;
+      .accordion-item {        
+        border-top: 1px solid #ddd;
       }
       .accordion-header {
         padding: 20px;
@@ -129,6 +128,7 @@
         transform: rotate(90deg);
       }
       .accordion-content {
+        border-top: 1px solid #ddd;       
         max-height: 0;
         overflow: hidden;
         padding: 0 20px;
@@ -142,6 +142,7 @@
       }
       .accordion-content.open {
         padding: 15px 20px;
+        border-bottom: 1px solid #ddd;
         max-height: 500px; /* 足够显示内容即可 */
       }
     </style>
